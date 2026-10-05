@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background-color: #f7f7f5;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    @apply bg-bg font-body text-ink antialiased;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-medium;
+  }
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+  :focus-visible {
+    outline: 2px solid #8b7cf6;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .on-olive :focus-visible {
+    outline-color: #ffffff;
+  }
+  ::selection {
+    background: #c8c0ff;
+    color: #111111;
+  }
+}
+
+@layer components {
+  /* Animated accent underline (flat colour, no gradient) */
+  .link-u {
+    @apply relative inline-block;
+  }
+  .link-u::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-[2px] w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out;
+  }
+  .link-u:hover::after,
+  .link-u:focus-visible::after {
+    @apply scale-x-100;
+  }
+  .link-u-on::after {
+    @apply scale-x-100;
+  }
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-sm px-7 py-3 font-display text-base font-medium tracking-tight transition-colors duration-200;
+  }
+  .section-pad {
+    padding-block: theme('spacing.section');
+  }
+  .container-page {
+    @apply mx-auto w-full max-w-page px-5 md:px-8;
+  }
+  .label {
+    @apply font-body text-xs font-medium uppercase tracking-[0.18em];
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
