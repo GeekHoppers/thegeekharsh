@@ -1,12 +1,4 @@
-import {
-  GEEK_HOPPERS_URL,
-  LINKEDIN_URL,
-  PAPER_URL,
-  SITE_URL,
-  entity,
-  faq,
-  site,
-} from './site'
+import { GEEK_HOPPERS_URL, LINKEDIN_URL, PAPER_URL, SITE_URL, entity, faq, site } from './site'
 
 /** Concise llms.txt (llmstxt.org format): a curated entry point for LLM crawlers and agents. */
 export function buildLlmsTxt(): string {
@@ -17,9 +9,14 @@ export function buildLlmsTxt(): string {
 
 Last updated: ${now.lastUpdated}.
 
-## About
-- [Home — profile, company, engineering, research, contact](${SITE_URL}/): single-page profile of Harsh Sinha.
-- [Full plain-text version of this site](${SITE_URL}/llms-full.txt): every section in Markdown.
+## Pages
+- [Home Overview](${SITE_URL}/): Full profile and technology platform overview.
+- [Geek Hoppers](${SITE_URL}/geek-hoppers): Dedicated company deep-dive, capabilities, and client work.
+- [About Harsh Sinha](${SITE_URL}/about): Full story, philosophy, builder mindset, and career path.
+- [Engineering Architecture](${SITE_URL}/engineering): Deep-dive into AEM, backend systems, and computer vision.
+- [Research & Publications](${SITE_URL}/research): Real-Time Threat Detection System for Campus Security (CRC Press 2025).
+- [Contact & Collaboration](${SITE_URL}/contact): Direct communication channels and enterprise inquiries.
+- [Plain-Text Archive](${SITE_URL}/llms-full.txt): Complete site content in Markdown.
 
 ## Key facts
 - Name: ${site.name} (${entity.alternateName})
@@ -42,7 +39,14 @@ export function buildLlmsFullTxt(): string {
   const lines: string[] = []
   const push = (...l: string[]) => lines.push(...l)
 
-  push(`# Harsh Sinha — The Geek Harsh`, '', `> ${hero.kicker}`, '', `${hero.headline} ${hero.support}`, '')
+  push(
+    `# Harsh Sinha — The Geek Harsh`,
+    '',
+    `> ${hero.kicker}`,
+    '',
+    `${hero.headline} ${hero.support}`,
+    '',
+  )
   push(`Canonical URL: ${SITE_URL}`, `Last updated: ${now.lastUpdated}`, '')
 
   push(`## Geek Hoppers`, '', gh.copy, '')
@@ -59,11 +63,30 @@ export function buildLlmsFullTxt(): string {
   path.entries.forEach((e) => push(`- ${e.period ? `${e.period}: ` : ''}${e.role}`))
   push('')
 
-  push(`## Research`, '', `**${research.title}**`, '', research.meta, '', research.copy, '', `Link: ${PAPER_URL}`, '')
+  push(
+    `## Research`,
+    '',
+    `**${research.title}**`,
+    '',
+    research.meta,
+    '',
+    research.copy,
+    '',
+    `Link: ${PAPER_URL}`,
+    '',
+  )
 
   push(`## Now`, '', `${now.headline} (Last updated: ${now.lastUpdated})`, '')
   now.items.forEach((i) => push(`- ${i.title} — ${i.body}`))
-  push('', `### ${now.writing.headline}`, '', now.writing.copy, '', `Topics: ${now.writing.topics.join('; ')}`, '')
+  push(
+    '',
+    `### ${now.writing.headline}`,
+    '',
+    now.writing.copy,
+    '',
+    `Topics: ${now.writing.topics.join('; ')}`,
+    '',
+  )
 
   push(`## Quick answers`, '')
   faq.forEach((f) => push(`### ${f.q}`, '', f.a, ''))

@@ -53,7 +53,8 @@
   .link-u:focus-visible::after {
     @apply scale-x-100;
   }
-  .link-u-on::after {
+  .link-u-on::after,
+  .link-u-scroll-active::after {
     @apply scale-x-100;
   }
   .btn {

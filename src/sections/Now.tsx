@@ -1,5 +1,4 @@
 import { entity, posts, site } from '../content/site'
-import { withGh } from '../components/OliveDot'
 import { Reveal } from '../components/Reveal'
 
 export function Now() {
@@ -17,7 +16,9 @@ export function Now() {
               {n.headline}
             </span>
           </Reveal>
-          <p className="mt-4 text-sm text-muted">Last updated: <time dateTime={entity.dateModified}>{n.lastUpdated}</time></p>
+          <p className="mt-4 text-sm text-muted">
+            Last updated: <time dateTime={entity.dateModified}>{n.lastUpdated}</time>
+          </p>
 
           <ul className="mt-10 md:mt-14">
             {n.items.map((it, i) => (
@@ -28,7 +29,7 @@ export function Now() {
                 }`}
               >
                 <p className="font-display text-h3 md:col-span-5">
-                  {it.gh ? withGh(it.title) : it.title}
+                  {it.title}
                 </p>
                 <p className="text-muted md:col-span-5 md:pt-2">{it.body}</p>
               </li>

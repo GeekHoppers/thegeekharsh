@@ -1,67 +1,71 @@
 import { site } from '../content/site'
-import { OliveDot, withGh } from '../components/OliveDot'
 import { Photo } from '../components/Photo'
 import { Reveal } from '../components/Reveal'
+
+import { Link } from '../router'
 
 export function Hero() {
   const { hero } = site
   const fullName = hero.name.join(' ')
 
   return (
-    <section aria-labelledby="hero-title" className="pb-12 pt-8 md:pb-16 md:pt-10">
+    <section aria-labelledby="hero-title" className="pb-16 pt-8 md:pb-24 md:pt-14">
       <div className="container-page">
-        {/* Row A: index label, name, eyebrow, hairline */}
-        <header>
-          <p className="label mb-4 md:mb-6">01 / Index</p>
-          <h1
-            id="hero-title"
-            className="font-display text-[clamp(2.25rem,11vw,3.5rem)] font-bold leading-[0.95] tracking-[-0.03em] md:whitespace-nowrap md:text-[clamp(2.75rem,6.5vw,5.5rem)]"
-          >
-            {fullName}
-          </h1>
-          <p className="label mt-4 md:mt-5">{withGh(hero.kicker)}</p>
-          <hr className="mt-8 border-0 border-t border-ink/15 md:mt-10" />
-        </header>
+        <div className="grid items-end gap-x-8 gap-y-12 md:grid-cols-12">
+          {/* Left Column: Typography, Narrative, and Actions */}
+          <div className="relative z-10 md:col-span-7 lg:col-span-8">
+            <p className="label mb-6 text-muted md:mb-8">{hero.kicker}</p>
 
-        {/* Row B: copy (left) + portrait (right) */}
-        <div className="mt-8 grid gap-x-8 gap-y-8 md:mt-10 md:grid-cols-12 md:items-stretch">
-          <figure className="order-first md:order-none md:col-span-4 md:col-start-9 md:row-start-1">
-            <Photo
-              {...hero.portrait}
-              priority
-              sizes="(min-width: 1280px) 400px, (min-width: 768px) 33vw, 100vw"
-              className="w-full"
-            />
-            <figcaption className="label mt-3 text-right">Portrait / Harsh Sinha</figcaption>
-          </figure>
+            <h1
+              id="hero-title"
+              className="font-display text-[clamp(2.75rem,8vw,6.5rem)] font-bold uppercase leading-[0.92] tracking-[-0.04em] text-ink"
+            >
+              {fullName}
+            </h1>
 
-          <div className="flex flex-col justify-between gap-10 md:col-span-8 md:col-start-1 md:row-start-1">
-            <div>
+            <div className="mt-8 md:mt-12">
               <Reveal
                 as="p"
-                className="max-w-[16ch] font-display text-h3 md:max-w-[18ch]"
+                className="max-w-[20ch] font-display text-h3 leading-[1.08] text-ink"
               >
                 {hero.headline}
               </Reveal>
-              <Reveal as="p" className="mt-6 max-w-[42ch] text-lg text-muted">
-                {withGh(hero.support)}
+
+              <Reveal as="p" className="mt-6 max-w-[44ch] text-lg text-muted">
+                {hero.support}
               </Reveal>
             </div>
 
-            <Reveal className="flex flex-wrap items-center gap-x-10 gap-y-4">
-              <a href={hero.primaryCta.href} className="btn bg-ink text-bg hover:bg-ink/85">
-                <span>
-                  {hero.primaryCta.label}
-                  <OliveDot ring />
-                </span>
-              </a>
-              <a
-                href={hero.secondaryCta.href}
-                className="link-u link-u-on flex min-h-[44px] items-center font-display text-base font-medium"
+            <Reveal className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5 md:mt-12">
+              <Link to={hero.primaryCta.href} className="btn bg-ink text-bg hover:bg-ink/85">
+                <span>{hero.primaryCta.label}</span>
+              </Link>
+              <Link
+                to={hero.secondaryCta.href}
+                className="link-u link-u-on flex min-h-[44px] items-center font-display text-base font-medium text-ink"
               >
                 <span>{hero.secondaryCta.label}</span>
-              </a>
+              </Link>
             </Reveal>
+          </div>
+
+          {/* Right Column: Harsh Sinha Executive Portrait */}
+          <div className="md:col-span-5 lg:col-span-4">
+            <figure className="relative mx-auto max-w-[420px] md:max-w-none">
+              <div className="relative overflow-hidden rounded-sm bg-[#EAEAE5] px-2 pt-4">
+                <Photo
+                  {...hero.portrait}
+                  priority
+                  fit="contain"
+                  fallbackExt="png"
+                  sizes="(min-width: 1280px) 420px, (min-width: 768px) 40vw, 100vw"
+                  className="w-full"
+                />
+              </div>
+              <figcaption className="label mt-3 text-right text-muted">
+                Harsh Sinha — Founder &amp; CEO
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

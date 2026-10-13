@@ -1,6 +1,7 @@
 import { site } from '../content/site'
 import { Photo } from '../components/Photo'
 import { Reveal } from '../components/Reveal'
+import { Link } from '../router'
 
 export function About() {
   const { about } = site
@@ -45,6 +46,15 @@ export function About() {
             sizes="(min-width: 1280px) 700px, (min-width: 768px) 58vw, 100vw"
             className="w-full"
           />
+        </div>
+
+        <div className="mt-6 md:col-span-12">
+          <Link
+            to="/about"
+            className="link-u font-display text-base font-medium text-ink"
+          >
+            Read full background &amp; story →
+          </Link>
         </div>
       </div>
     </section>

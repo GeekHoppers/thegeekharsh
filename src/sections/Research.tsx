@@ -1,5 +1,6 @@
 import { site } from '../content/site'
 import { Reveal } from '../components/Reveal'
+import { Link } from '../router'
 
 export function Research() {
   const r = site.research
@@ -23,17 +24,25 @@ export function Research() {
             <p className="text-muted md:col-span-4">{r.meta}</p>
             <div className="md:col-span-5 md:col-start-6">
               <p className="text-lg md:text-xl">{r.copy}</p>
-              <a
-                href={r.link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-u link-u-on mt-8 inline-flex min-h-[44px] items-center font-display text-lg font-medium"
-              >
-                <span>
-                  {r.link.label}
-                  <span className="sr-only"> (opens in a new tab)</span>
-                </span>
-              </a>
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <a
+                  href={r.link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-u link-u-on inline-flex min-h-[44px] items-center font-display text-lg font-medium"
+                >
+                  <span>
+                    {r.link.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </span>
+                </a>
+                <Link
+                  to="/research"
+                  className="link-u inline-flex min-h-[44px] items-center font-display text-base font-medium text-ink"
+                >
+                  Full paper analysis &amp; architecture →
+                </Link>
+              </div>
             </div>
           </div>
         </article>

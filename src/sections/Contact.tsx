@@ -1,6 +1,6 @@
 import { site } from '../content/site'
-import { withGh } from '../components/OliveDot'
 import { Reveal } from '../components/Reveal'
+import { Link } from '../router'
 
 export function Contact() {
   const c = site.contact
@@ -39,7 +39,7 @@ export function Contact() {
               >
                 <span className="link-u font-display text-h3">
                   <span>
-                    {r.gh ? withGh(r.label) : r.label}
+                    {r.label}
                     <span aria-hidden="true"> →</span>
                     {r.external && <span className="sr-only"> (opens in a new tab)</span>}
                   </span>
@@ -50,7 +50,7 @@ export function Contact() {
           ))}
         </ul>
 
-        <p className="border-t border-hairline pt-6">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-6 border-t border-hairline pt-6">
           <a
             href={c.linkedin.href}
             target="_blank"
@@ -62,7 +62,13 @@ export function Contact() {
               <span className="sr-only"> (opens in a new tab)</span>
             </span>
           </a>
-        </p>
+          <Link
+            to="/contact"
+            className="link-u inline-flex min-h-[44px] items-center font-display text-base font-medium text-ink"
+          >
+            Visit dedicated contact hub →
+          </Link>
+        </div>
       </div>
     </section>
   )

@@ -69,13 +69,13 @@ export const site = {
 
   nav: {
     links: [
-      { label: 'Geek Hoppers', href: '#geek-hoppers', gh: true },
-      { label: 'About', href: '#about' },
-      { label: 'Engineering', href: '#engineering' },
-      { label: 'Research', href: '#research' },
-      { label: 'Contact', href: '#contact' },
+      { label: 'Geek Hoppers', href: '/geek-hoppers', gh: true },
+      { label: 'About', href: '/about' },
+      { label: 'Engineering', href: '/engineering' },
+      { label: 'Research', href: '/research' },
+      { label: 'Contact', href: '/contact' },
     ] satisfies NavLink[],
-    cta: { label: "Let's Talk", href: '#contact' },
+    cta: { label: "Let's Talk", href: '/contact' },
   },
 
   hero: {
@@ -83,13 +83,13 @@ export const site = {
     kicker: 'Founder & CEO — Geek Hoppers · Software Engineer',
     headline: 'I build technology — and the company around it.',
     support: 'Founder & CEO of Geek Hoppers. Software engineer. Builder. The Geek Harsh.',
-    primaryCta: { label: 'Explore Geek Hoppers', href: '#geek-hoppers' },
-    secondaryCta: { label: 'About Harsh', href: '#about' },
+    primaryCta: { label: 'Explore Geek Hoppers', href: '/geek-hoppers' },
+    secondaryCta: { label: 'About Harsh', href: '/about' },
     portrait: {
       src: '/images/harsh-portrait',
-      alt: 'Portrait of Harsh Sinha, founder of Geek Hoppers',
-      width: 1200,
-      height: 1500,
+      alt: 'Harsh Sinha, Founder & CEO of Geek Hoppers and Software Engineer',
+      width: 1024,
+      height: 866,
     },
   },
 
@@ -123,9 +123,9 @@ export const site = {
     words: ['ENGINEER', 'FOUNDER', 'BUILDER'],
     photo: {
       src: '/images/harsh-candid',
-      alt: 'Harsh Sinha at work, in a candid photograph',
-      width: 1600,
-      height: 1067,
+      alt: 'Harsh Sinha at work, candid photograph',
+      width: 1200,
+      height: 900,
     },
   },
 
@@ -270,8 +270,7 @@ export const entity = {
   alumniOf: 'IMS Engineering College',
   orgFoundingDate: '2026-01',
   paperYear: '2025',
-  paperBook:
-    'Integrated Technologies in Electrical, Electronics and Biotechnology Engineering',
+  paperBook: 'Integrated Technologies in Electrical, Electronics and Biotechnology Engineering',
   paperPublisher: 'CRC Press',
 } as const
 

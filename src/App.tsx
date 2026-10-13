@@ -1,21 +1,36 @@
 import { LazyMotion, domAnimation } from 'framer-motion'
-import { SEO } from './components/SEO'
+import { useRouter } from './router'
 import { Nav } from './components/Nav'
 import { Footer } from './components/Footer'
-import { Hero } from './sections/Hero'
-import { GeekHoppers } from './sections/GeekHoppers'
-import { About } from './sections/About'
-import { Engineering } from './sections/Engineering'
-import { Path } from './sections/Path'
-import { Research } from './sections/Research'
-import { Now } from './sections/Now'
-import { Answers } from './sections/Answers'
-import { Contact } from './sections/Contact'
+import { HomePage } from './pages/HomePage'
+import { GeekHoppersPage } from './pages/GeekHoppersPage'
+import { AboutPage } from './pages/AboutPage'
+import { EngineeringPage } from './pages/EngineeringPage'
+import { ResearchPage } from './pages/ResearchPage'
+import { ContactPage } from './pages/ContactPage'
 
 export default function App() {
+  const { path } = useRouter()
+
+  const renderContent = () => {
+    switch (path) {
+      case '/geek-hoppers':
+        return <GeekHoppersPage />
+      case '/about':
+        return <AboutPage />
+      case '/engineering':
+        return <EngineeringPage />
+      case '/research':
+        return <ResearchPage />
+      case '/contact':
+        return <ContactPage />
+      default:
+        return <HomePage />
+    }
+  }
+
   return (
     <LazyMotion features={domAnimation} strict>
-      <SEO />
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-3 focus:text-bg"
@@ -24,15 +39,7 @@ export default function App() {
       </a>
       <Nav />
       <main id="main">
-        <Hero />
-        <GeekHoppers />
-        <About />
-        <Engineering />
-        <Path />
-        <Research />
-        <Now />
-        <Answers />
-        <Contact />
+        {renderContent()}
       </main>
       <Footer />
     </LazyMotion>

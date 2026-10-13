@@ -1,11 +1,14 @@
 import { LINKEDIN_URL, site } from '../content/site'
+import { Link } from '../router'
 
 export function Footer() {
   return (
     <footer className="border-t border-hairline">
       <div className="container-page grid gap-10 py-12 md:grid-cols-12 md:items-end md:py-16">
         <div className="md:col-span-6">
-          <p className="font-display text-lg font-medium tracking-[0.04em]">{site.wordmark}</p>
+          <Link to="/" className="font-display text-lg font-medium tracking-[0.04em] text-ink transition-colors hover:text-accent">
+            {site.wordmark}
+          </Link>
           <p className="mt-2 text-sm text-muted">{site.footer.copyright}</p>
         </div>
         <div className="md:col-span-3">

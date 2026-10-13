@@ -9,19 +9,19 @@ export function Answers() {
     <section
       id="answers"
       aria-labelledby="answers-title"
-      className="section-pad border-hairline border-t"
+      className="section-pad border-t border-hairline"
     >
       <div className="container-page grid gap-x-8 gap-y-6 md:grid-cols-12">
         <p className="label md:col-span-2 md:pt-3">08 / Answers</p>
         <div className="md:col-span-10">
-          <h2 id="answers-title" className="text-h2 font-display">
+          <h2 id="answers-title" className="font-display text-h2">
             Quick answers.
           </h2>
           <dl className="mt-10 md:mt-14">
             {faq.map((f, i) => (
               <div
                 key={f.q}
-                className={`border-hairline grid gap-2 border-t py-6 md:grid-cols-10 md:gap-8 md:py-8 ${
+                className={`grid gap-2 border-t border-hairline py-6 md:grid-cols-10 md:gap-8 md:py-8 ${
                   i === faq.length - 1 ? 'border-b' : ''
                 }`}
               >

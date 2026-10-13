@@ -1,5 +1,6 @@
 import { site } from '../content/site'
 import { Reveal } from '../components/Reveal'
+import { Link } from '../router'
 
 export function Engineering() {
   const e = site.engineering
@@ -34,6 +35,15 @@ export function Engineering() {
               <p className="mt-4 text-muted">{c.body}</p>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-6 md:col-span-10 md:col-start-3">
+          <Link
+            to="/engineering"
+            className="link-u font-display text-base font-medium text-ink"
+          >
+            Full architecture &amp; systems breakdown →
+          </Link>
         </div>
       </div>
     </section>

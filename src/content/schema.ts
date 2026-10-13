@@ -1,12 +1,4 @@
-import {
-  GEEK_HOPPERS_URL,
-  LINKEDIN_URL,
-  PAPER_URL,
-  SITE_URL,
-  entity,
-  faq,
-  site,
-} from './site'
+import { GEEK_HOPPERS_URL, LINKEDIN_URL, PAPER_URL, SITE_URL, entity, faq, site } from './site'
 
 const PERSON_ID = `${SITE_URL}/#person`
 const ORG_ID = `${GEEK_HOPPERS_URL}/#organization`
@@ -50,6 +42,7 @@ export function buildJsonLd(): Record<string, unknown> {
         jobTitle: entity.jobTitle,
         description: entity.description,
         url: SITE_URL,
+        image: `${SITE_URL}/images/harsh-portrait.png`,
         mainEntityOfPage: { '@id': `${SITE_URL}/#profilepage` },
         email: `mailto:${contact.email}`,
         worksFor: { '@id': ORG_ID },
@@ -106,3 +99,40 @@ export function buildJsonLd(): Record<string, unknown> {
 
 /** Serialised for a <script type="application/ld+json"> tag ("<" escaped for safe inlining). */
 export const jsonLdString = (): string => JSON.stringify(buildJsonLd()).replace(/</g, '\\u003c')
+
+export function buildPageJsonLd(opts: {
+  url: string
+  name: string
+  description: string
+  type?: string
+  breadcrumb?: Array<{ name: string; url: string }>
+}): Record<string, unknown> {
+  const full = buildJsonLd()
+  const graph = Array.isArray(full['@graph']) ? [...full['@graph']] : []
+  graph.push({
+    '@type': opts.type || 'WebPage',
+    '@id': `${opts.url}#webpage`,
+    url: opts.url,
+    name: opts.name,
+    description: opts.description,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    ...(opts.breadcrumb
+      ? {
+          breadcrumb: {
+            '@type': 'BreadcrumbList',
+            itemListElement: opts.breadcrumb.map((b, idx) => ({
+              '@type': 'ListItem',
+              position: idx + 1,
+              name: b.name,
+              item: b.url,
+            })),
+          },
+        }
+      : {}),
+  })
+  return {
+    '@context': 'https://schema.org',
+    '@graph': graph,
+  }
+}
+

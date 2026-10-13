@@ -18,19 +18,21 @@ const tags = {
 } satisfies Record<string, ElementType>
 
 /**
- * Fade-up once on scroll (opacity + 16px, ~500ms). Under prefers-reduced-motion the
- * element is shown immediately. SSR/first render matches on both server and client.
+ * Fade-up once on scroll (opacity + 16px, ~500ms).
+ * On SSR and when prefers-reduced-motion is active, content is rendered fully visible
+ * (initial={false}) so search crawlers, answer engines, and LLMs never encounter hidden content.
  */
 export function Reveal({ children, as = 'div', className, delay = 0 }: RevealProps) {
   const reduce = useReducedMotion()
   const Tag = tags[as]
+  const isServer = typeof window === 'undefined'
+
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, y: 16 }}
-      animate={reduce ? { opacity: 1, y: 0, transition: { duration: 0 } } : undefined}
+      initial={isServer || reduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '0px 0px -8% 0px' }}
+      viewport={{ once: true, margin: '0px 0px 40px 0px' }}
       transition={{ duration: 0.5, ease: 'easeOut', delay }}
     >
       {children}

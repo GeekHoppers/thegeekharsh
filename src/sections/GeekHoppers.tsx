@@ -1,5 +1,6 @@
 import { site } from '../content/site'
 import { Reveal } from '../components/Reveal'
+import { Link } from '../router'
 
 export function GeekHoppers() {
   const gh = site.geekHoppers
@@ -49,15 +50,23 @@ export function GeekHoppers() {
         <div className="mt-8 grid gap-10 md:col-span-10 md:col-start-3 md:grid-cols-10 md:items-end">
           <div className="md:col-span-6">
             <p className="text-lg">{gh.clients}</p>
-            <a
-              href={gh.cta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn mt-8 border border-white text-white transition-colors hover:bg-white hover:text-olive"
-            >
-              {gh.cta.label}
-              <span className="sr-only"> (opens in a new tab)</span>
-            </a>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a
+                href={gh.cta.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn border border-white text-white transition-colors hover:bg-white hover:text-olive"
+              >
+                {gh.cta.label}
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+              <Link
+                to="/geek-hoppers"
+                className="btn bg-white text-ink transition-colors hover:bg-white/90"
+              >
+                Detailed Overview →
+              </Link>
+            </div>
           </div>
           <img
             src={gh.logo.src}
