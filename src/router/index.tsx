@@ -50,6 +50,12 @@ export function RouterProvider({ initialPath = '/', children }: RouterProviderPr
     return () => window.removeEventListener('popstate', onPopState)
   }, [])
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search)
+    }
+  }, [path])
+
   const navigate = (to: string) => {
     if (typeof window === 'undefined') return
     const target = to.replace(/\/+$/, '') || '/'

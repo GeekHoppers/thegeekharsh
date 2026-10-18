@@ -92,12 +92,20 @@ export default function App({ content }: AppProps) {
   return (
     <ThemeProvider>
       <LazyMotion features={domAnimation} strict>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-3 rounded-lg shadow-lg font-body-sm"
+        <button
+          type="button"
+          onClick={() => {
+            const main = document.getElementById('main')
+            if (main) {
+              main.tabIndex = -1
+              main.focus()
+              main.scrollIntoView({ behavior: 'smooth' })
+            }
+          }}
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-primary focus:text-on-primary focus:px-4 focus:py-3 rounded-lg shadow-lg font-body-sm text-left"
         >
           Skip to content
-        </a>
+        </button>
         <Nav />
         <main id="main">
           <Suspense fallback={<div className="min-h-[50vh]" />}>

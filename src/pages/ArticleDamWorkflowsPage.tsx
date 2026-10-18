@@ -34,6 +34,13 @@ export function ArticleDamWorkflowsPage() {
     })
   }
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const osgiSnippet = `@Component(
     service = EventHandler.class,
     property = {
@@ -205,60 +212,66 @@ public class DebouncedAssetEventHandler implements EventHandler {
                 </span>
               </div>
               <nav className="space-y-1 font-body-sm text-body-sm">
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-01"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-01')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     01
                   </span>
                   <span className="leading-snug">The Ingestion Concurrency Trap</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-02"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-02')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     02
                   </span>
                   <span className="leading-snug">Decoupled OSGi R7 Event Handlers</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-03"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-03')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     03
                   </span>
                   <span className="leading-snug">Isolating Sling Job Queues</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-04"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-04')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     04
                   </span>
                   <span className="leading-snug">Metadata Automation &amp; Smart Tags</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-05"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-05')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     05
                   </span>
                   <span className="leading-snug">Production Telemetry &amp; Heap Stability</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-06"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-06')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     06
                   </span>
                   <span className="leading-snug">Engineering Recommendations</span>
-                </a>
+                </button>
               </nav>
             </div>
           </aside>

@@ -34,6 +34,13 @@ export function ArticleAemBlocksPage() {
     })
   }
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const codeSnippet = `// Architectural Micro-block Decorator Pattern
 export default async function decorate(block) {
   // 1. Deconstruct direct table elements (rows & columns)
@@ -217,60 +224,66 @@ export default async function decorate(block) {
                 </span>
               </div>
               <nav className="space-y-1 font-body-sm text-body-sm">
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#section-01"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('section-01')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     01
                   </span>
                   <span className="leading-snug">The Architectural Paradigm Shift</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#section-02"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('section-02')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     02
                   </span>
                   <span className="leading-snug">The EDS Block Decorator Contract</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#section-03"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('section-03')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     03
                   </span>
                   <span className="leading-snug">Preventing Cumulative Layout Shift &amp; LCP</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#section-04"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('section-04')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     04
                   </span>
                   <span className="leading-snug">Universal Editor Instrumentation</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#section-05"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('section-05')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     05
                   </span>
                   <span className="leading-snug">Defensive Table Transformation</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#section-06"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('section-06')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     06
                   </span>
                   <span className="leading-snug">Key Takeaways for Engineers</span>
-                </a>
+                </button>
               </nav>
             </div>
           </aside>

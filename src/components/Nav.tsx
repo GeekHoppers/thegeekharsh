@@ -20,6 +20,85 @@ const NAV_LINKS: NavLinkItem[] = [
   { label: 'Contact', href: '/contact' },
 ]
 
+function SunIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </svg>
+  )
+}
+
+function MoonIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+    </svg>
+  )
+}
+
+function MenuIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <line x1="4" x2="20" y1="12" y2="12" />
+      <line x1="4" x2="20" y1="6" y2="6" />
+      <line x1="4" x2="20" y1="18" y2="18" />
+    </svg>
+  )
+}
+
+function CloseIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M18 6 6 18" />
+      <path d="m6 6 12 12" />
+    </svg>
+  )
+}
+
 export function Nav() {
   const { path } = useRouter()
   const { theme, toggleTheme } = useTheme()
@@ -101,11 +180,13 @@ export function Nav() {
               onClick={toggleTheme}
               suppressHydrationWarning
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              className="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
+              className="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all active:scale-90 hover:rotate-45"
             >
-              <span suppressHydrationWarning className="material-symbols-outlined text-[20px]">
-                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
-              </span>
+              {theme === 'dark' ? (
+                <SunIcon className="w-5 h-5 text-primary" />
+              ) : (
+                <MoonIcon className="w-5 h-5 text-on-surface" />
+              )}
             </button>
 
             {/* View Résumé Button */}
@@ -124,9 +205,11 @@ export function Nav() {
               aria-expanded={mobileMenuOpen}
               className="xl:hidden w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
             >
-              <span className="material-symbols-outlined text-[24px]">
-                {mobileMenuOpen ? 'close' : 'menu'}
-              </span>
+              {mobileMenuOpen ? (
+                <CloseIcon className="w-5 h-5" />
+              ) : (
+                <MenuIcon className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -179,11 +262,13 @@ export function Nav() {
                 type="button"
                 onClick={toggleTheme}
                 aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface text-body-sm hover:bg-surface-container transition-colors"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface text-body-sm hover:bg-surface-container transition-colors"
               >
-                <span className="material-symbols-outlined text-[18px]">
-                  {theme === 'dark' ? 'light_mode' : 'dark_mode'}
-                </span>
+                {theme === 'dark' ? (
+                  <SunIcon className="w-4 h-4 text-primary" />
+                ) : (
+                  <MoonIcon className="w-4 h-4 text-on-surface" />
+                )}
                 <span>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</span>
               </button>
             </div>

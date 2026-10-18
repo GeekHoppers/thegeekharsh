@@ -34,6 +34,13 @@ export function ArticleVisionPrototypePage() {
     })
   }
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const visionSnippet = `# Downsampled Multithreaded Frame Processing Pipeline
 def process_frame(frame, face_threshold=0.6):
     # 1. Downsample raw 640x480 frame to 160x120 for rapid inference
@@ -202,60 +209,66 @@ def process_frame(frame, face_threshold=0.6):
                 </span>
               </div>
               <nav className="space-y-1 font-body-sm text-body-sm">
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-01"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-01')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     01
                   </span>
                   <span className="leading-snug">The Prototype Reality Check</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-02"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-02')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     02
                   </span>
                   <span className="leading-snug">Optical Variance &amp; Webcam Limits</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-03"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-03')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     03
                   </span>
                   <span className="leading-snug">Fragility of Pose Heuristics</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-04"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-04')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     04
                   </span>
                   <span className="leading-snug">Downsampling &amp; Latency Bounds</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-05"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-05')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     05
                   </span>
                   <span className="leading-snug">Simulated Testing vs. Production</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-06"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-06')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     06
                   </span>
                   <span className="leading-snug">Key Takeaways for Researchers</span>
-                </a>
+                </button>
               </nav>
             </div>
           </aside>

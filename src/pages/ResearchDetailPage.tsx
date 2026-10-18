@@ -21,6 +21,13 @@ export function ResearchDetailPage() {
     })
   }
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <div className="flex flex-col w-full">
       <SEO
@@ -280,70 +287,76 @@ export function ResearchDetailPage() {
                 </span>
                 <ul className="space-y-space-xs font-body-sm text-body-sm">
                   <li>
-                    <a
-                      className="text-on-surface hover:text-primary transition-colors flex items-center justify-between"
-                      href="#abstract"
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('abstract')}
+                      className="w-full text-on-surface hover:text-primary transition-colors flex items-center justify-between cursor-pointer py-1 text-left"
                     >
                       <span>1. Structured Abstract</span>
                       <span className="font-label-code text-label-code text-on-surface-variant">
                         01
                       </span>
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a
-                      className="text-on-surface hover:text-primary transition-colors flex items-center justify-between"
-                      href="#pipeline-diagram"
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('pipeline-diagram')}
+                      className="w-full text-on-surface hover:text-primary transition-colors flex items-center justify-between cursor-pointer py-1 text-left"
                     >
                       <span>2. Pipeline Architecture</span>
                       <span className="font-label-code text-label-code text-on-surface-variant">
                         02
                       </span>
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a
-                      className="text-on-surface hover:text-primary transition-colors flex items-center justify-between"
-                      href="#system-tech"
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('system-tech')}
+                      className="w-full text-on-surface hover:text-primary transition-colors flex items-center justify-between cursor-pointer py-1 text-left"
                     >
                       <span>3. System &amp; Technology Stack</span>
                       <span className="font-label-code text-label-code text-on-surface-variant">
                         03
                       </span>
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a
-                      className="text-on-surface hover:text-primary transition-colors flex items-center justify-between"
-                      href="#evaluation"
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('evaluation')}
+                      className="w-full text-on-surface hover:text-primary transition-colors flex items-center justify-between cursor-pointer py-1 text-left"
                     >
                       <span>4. Simulated Evaluation</span>
                       <span className="font-label-code text-label-code text-on-surface-variant">
                         04
                       </span>
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a
-                      className="text-on-surface hover:text-primary transition-colors flex items-center justify-between"
-                      href="#limitations"
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('limitations')}
+                      className="w-full text-on-surface hover:text-primary transition-colors flex items-center justify-between cursor-pointer py-1 text-left"
                     >
                       <span>5. Prototype Limitations</span>
                       <span className="font-label-code text-label-code text-on-surface-variant">
                         05
                       </span>
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a
-                      className="text-on-surface hover:text-primary transition-colors flex items-center justify-between"
-                      href="#citation"
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('citation')}
+                      className="w-full text-on-surface hover:text-primary transition-colors flex items-center justify-between cursor-pointer py-1 text-left"
                     >
                       <span>6. Citation &amp; BibTeX</span>
                       <span className="font-label-code text-label-code text-on-surface-variant">
                         06
                       </span>
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>

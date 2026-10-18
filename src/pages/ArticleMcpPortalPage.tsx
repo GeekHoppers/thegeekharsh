@@ -34,6 +34,13 @@ export function ArticleMcpPortalPage() {
     })
   }
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const mcpSnippet = `# MCP Tool Declaration in Python/Django Backend
 @mcp_server.tool()
 async def query_aggregate_metric(
@@ -208,60 +215,66 @@ async def query_aggregate_metric(
                 </span>
               </div>
               <nav className="space-y-1 font-body-sm text-body-sm">
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-01"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-01')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     01
                   </span>
                   <span className="leading-snug">The Fallacy of Raw Text-to-SQL</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-02"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-02')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     02
                   </span>
                   <span className="leading-snug">Enter Model Context Protocol</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-03"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-03')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     03
                   </span>
                   <span className="leading-snug">Deterministic Tool Routing</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-04"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-04')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     04
                   </span>
                   <span className="leading-snug">Schema Introspection &amp; Guards</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-05"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-05')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     05
                   </span>
                   <span className="leading-snug">Analyst UX &amp; Latency Budgets</span>
-                </a>
-                <a
-                  className="toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant"
-                  href="#sec-06"
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('sec-06')}
+                  className="w-full text-left toc-link group flex items-start gap-space-xs p-1.5 rounded-lg hover:text-on-surface hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer"
                 >
                   <span className="font-label-code text-label-code text-primary mt-0.5 shrink-0">
                     06
                   </span>
                   <span className="leading-snug">Key Engineering Takeaways</span>
-                </a>
+                </button>
               </nav>
             </div>
           </aside>
