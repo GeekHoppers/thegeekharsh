@@ -1,0 +1,107 @@
+# Harsh Sinha — The Geek Harsh
+
+> Founder & CEO — Geek Hoppers · Software Engineer
+
+I build technology — and the company around it. Founder & CEO of Geek Hoppers. Software engineer. Builder. The Geek Harsh.
+
+Canonical URL: https://thegeekharsh.in
+Last updated: October 2026
+
+## Geek Hoppers
+
+A technology company founded in January 2026. Geek Hoppers designs and develops websites, web applications, AI workflows, data products and enterprise Adobe Experience Manager solutions for startups, growing teams and enterprises.
+
+01. Websites & Web Applications
+02. AI & Machine Learning
+03. Data Science & Analytics
+04. Adobe Experience Manager
+
+Tagline: Hop for Innovation.
+Working with real clients, including Careeriens.com.
+Website: https://www.geekhoppers.com
+
+## About
+
+I like taking an idea from a problem to a real product. I started as an engineer, which is why the company I'm building is technical at its core.
+
+Roles: ENGINEER, FOUNDER, BUILDER
+
+## Engineering
+
+- Enterprise: Adobe Experience Manager, APIs, content migration, cloud platforms and performance.
+- Software: Java, Spring Boot, Python, JavaScript, databases and system design.
+- AI & Vision: Machine learning, deep learning, OpenCV, YOLO, MediaPipe and computer vision.
+
+## Path
+
+- 2026 — Present: Founder & CEO, Geek Hoppers
+- Software Developer, enterprise Adobe Experience Manager
+- 2024: Summer Trainee, Advanced Java — Softpro Technologies
+- 2021–2025: B.Tech, Computer Science & Engineering — IMS Engineering College
+
+## Research
+
+**Real-Time Threat Detection System for Campus Security Using Integrated Computer Vision Techniques**
+
+Chapter in Integrated Technologies in Electrical, Electronics and Biotechnology Engineering — CRC Press, 2025 (ICITEEB 2025 proceedings)
+
+A real-time campus security system that combines face recognition, weapon detection and gesture and posture analysis, with local and email alerts. Built as Garun Drishti.
+
+Link: https://www.routledge.com/Integrated-Technologies-in-Electrical-Electronics-and-Biotechnology-Engineering-Volume-1/Aggarwal-Shukla-EweanDavidson-Bansal/p/book/9781041318422
+
+## Now
+
+What I'm building now. (Last updated: October 2026)
+
+- Geek Hoppers — Building the company and its services.
+- The Geek Harsh — Building this personal technology and founder platform.
+- AI & Intelligent Systems — Exploring AI, computer vision and automation.
+
+### Notes from the build.
+
+Notes on building software and a company. First pieces coming.
+
+Topics: Software engineering; AI; Product thinking; Building a company; Career lessons; Things I learn while building
+
+## Quick answers
+
+### Who is Harsh Sinha?
+
+Harsh Sinha is a technology founder and software engineer. He is the Founder & CEO of Geek Hoppers and is also known as The Geek Harsh.
+
+### What is Geek Hoppers?
+
+Geek Hoppers is a technology company founded in January 2026. It designs and develops websites, web applications, AI workflows, data products and enterprise Adobe Experience Manager solutions for startups, growing teams and enterprises.
+
+### What services does Geek Hoppers offer?
+
+Websites and web applications, AI and machine learning, data science and analytics, and Adobe Experience Manager.
+
+### What is The Geek Harsh?
+
+The Geek Harsh is Harsh Sinha's personal technology and founder platform, hosted at thegeekharsh.in.
+
+### What does Harsh Sinha work with as an engineer?
+
+Adobe Experience Manager, APIs, content migration, cloud platforms and performance; Java, Spring Boot, Python, JavaScript, databases and system design; and machine learning, deep learning, OpenCV, YOLO, MediaPipe and computer vision.
+
+### What is Harsh Sinha’s research?
+
+He published the chapter "Real-Time Threat Detection System for Campus Security Using Integrated Computer Vision Techniques" in Integrated Technologies in Electrical, Electronics and Biotechnology Engineering (CRC Press, 2025, ICITEEB 2025 proceedings). It describes a real-time campus security system, built as Garun Drishti, that combines face recognition, weapon detection and gesture and posture analysis, with local and email alerts.
+
+### What is Harsh Sinha’s background?
+
+He holds a B.Tech in Computer Science & Engineering from IMS Engineering College (2021–2025), was a Summer Trainee in Advanced Java at Softpro Technologies in 2024, worked as a Software Developer on enterprise Adobe Experience Manager, and has been Founder & CEO of Geek Hoppers since 2026.
+
+### How can I contact Harsh Sinha?
+
+For projects, email hello@thegeekharsh.in or visit geekhoppers.com. For speaking, media and collaboration, email media@thegeekharsh.in. He is also on LinkedIn at linkedin.com/in/harshsinhaa.
+
+## Contact
+
+- Email: hello@thegeekharsh.in
+- Work with Geek Hoppers: https://www.geekhoppers.com
+- Speaking, media, collaboration: media@thegeekharsh.in
+- LinkedIn: https://www.linkedin.com/in/harshsinhaa/
+
+© 2026 Harsh Sinha

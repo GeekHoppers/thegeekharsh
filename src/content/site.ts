@@ -5,6 +5,8 @@
  * this file, so the machine-readable facts always match what visitors see.
  */
 
+import { gmailComposeUrl } from '../utils/gmail'
+
 export interface FaqItem {
   q: string
   a: string
@@ -46,8 +48,9 @@ export interface Post {
 }
 
 /**
- * TODO: replace with the chapter DOI (https://doi.org/...) once confirmed.
+ * Verified chapter DOI and Routledge catalog URL.
  */
+export const PAPER_DOI_URL = 'https://doi.org/10.1201/9781003781011'
 export const PAPER_URL =
   'https://www.routledge.com/Integrated-Technologies-in-Electrical-Electronics-and-Biotechnology-Engineering-Volume-1/Aggarwal-Shukla-EweanDavidson-Bansal/p/book/9781041318422'
 
@@ -220,8 +223,8 @@ export const site = {
       {
         label: 'Talk to Harsh',
         detail: 'speaking, media, collaboration',
-        href: 'mailto:media@thegeekharsh.in',
-        external: false,
+        href: gmailComposeUrl('media@thegeekharsh.in'),
+        external: true,
         gh: false,
       },
     ],

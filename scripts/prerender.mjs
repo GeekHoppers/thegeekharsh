@@ -12,21 +12,42 @@ const { render, buildLlmsTxt, buildLlmsFullTxt } = await import(pathToFileURL(ss
 
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8')
 
-// Preload the two critical font files (display 500 + body 400, latin subset).
-const assets = readdirSync(resolve(dist, 'assets'))
-const preload = [/space-grotesk-latin-500-normal.*\.woff2$/, /inter-latin-400-normal.*\.woff2$/]
-  .map((re) => assets.find((f) => re.test(f)))
-  .filter(Boolean)
-  .map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
-  .join('\n    ')
+// Preload fonts if bundled in assets directory
+let preload = ''
+try {
+  const assets = readdirSync(resolve(dist, 'assets'))
+  preload = [/geist.*400.*\.woff2$/, /geist.*600.*\.woff2$/, /jetbrains.*400.*\.woff2$/]
+    .map((re) => assets.find((f) => re.test(f)))
+    .filter(Boolean)
+    .map((f) => `<link rel="preload" href="/assets/${f}" as="font" type="font/woff2" crossorigin />`)
+    .join('\n    ')
+} catch {
+  // assets directory or custom fonts handled via Google Fonts in index.html
+}
 
 const routes = [
   '/',
-  '/geek-hoppers',
   '/about',
-  '/engineering',
+  '/projects',
+  '/projects/gmr-web-platform',
+  '/projects/oliver-wyman',
+  '/projects/datajam-portal',
+  '/projects/careeriens',
+  '/projects/garun-drishti',
+  '/experience',
+  '/skills',
   '/research',
+  '/research/real-time-threat-detection',
+  '/writing',
+  '/writing/designing-maintainable-blocks-in-aem-edge-delivery-services',
+  '/writing/debugging-event-driven-dam-workflows-in-aem',
+  '/writing/reasoning-about-asset-upload-limits',
+  '/writing/lessons-from-building-a-conversational-data-portal',
+  '/writing/what-a-computer-vision-prototype-can-and-cannot-prove',
+  '/resume',
   '/contact',
+  '/privacy',
+  '/404',
 ]
 
 for (const route of routes) {
@@ -43,6 +64,9 @@ for (const route of routes) {
   if (route === '/') {
     writeFileSync(resolve(dist, 'index.html'), out)
     console.log(`Prerendered dist/index.html (${(out.length / 1024).toFixed(1)} kB)`)
+  } else if (route === '/404') {
+    writeFileSync(resolve(dist, '404.html'), out)
+    console.log(`Prerendered dist/404.html (${(out.length / 1024).toFixed(1)} kB)`)
   } else {
     const routeDir = resolve(dist, route.slice(1))
     mkdirSync(routeDir, { recursive: true })
@@ -51,7 +75,16 @@ for (const route of routes) {
   }
 }
 
-writeFileSync(resolve(dist, 'llms.txt'), buildLlmsTxt())
-writeFileSync(resolve(dist, 'llms-full.txt'), buildLlmsFullTxt())
+try {
+  const llms = buildLlmsTxt()
+  const llmsFull = buildLlmsFullTxt()
+  writeFileSync(resolve(dist, 'llms.txt'), llms)
+  writeFileSync(resolve(dist, 'llms-full.txt'), llmsFull)
+  writeFileSync(resolve(root, 'public', 'llms.txt'), llms)
+  writeFileSync(resolve(root, 'public', 'llms-full.txt'), llmsFull)
+} catch (e) {
+  console.warn('llms text generation notice:', e)
+}
+
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true })
-console.log('Static pre-rendering completed for all 6 routes.')
+console.log(`Static pre-rendering completed for all ${routes.length} routes.`)

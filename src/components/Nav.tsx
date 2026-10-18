@@ -1,244 +1,207 @@
-import { useEffect, useRef, useState } from 'react'
-import { m } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import { Link, useRouter } from '../router'
-import { site } from '../content/site'
+import { useTheme } from '../theme/ThemeContext'
+import { SITE_METADATA } from '../content/siteData'
+import { gmailComposeUrl } from '../utils/gmail'
+
+interface NavLinkItem {
+  label: string
+  href: string
+}
+
+const NAV_LINKS: NavLinkItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Research', href: '/research' },
+  { label: 'Writing', href: '/writing' },
+  { label: 'Contact', href: '/contact' },
+]
 
 export function Nav() {
   const { path } = useRouter()
-  const [scrolled, setScrolled] = useState(false)
-  const [open, setOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState<string | null>(null)
-  const toggleRef = useRef<HTMLButtonElement>(null)
-  const overlayRef = useRef<HTMLDivElement>(null)
+  const { theme, toggleTheme } = useTheme()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [prevPath, setPrevPath] = useState(path)
 
-  // Header border indicator on scroll
+  if (prevPath !== path) {
+    setPrevPath(path)
+    setMobileMenuOpen(false)
+  }
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false)
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // ScrollSpy on landing page (/): detects which section is currently centered in viewport
-  useEffect(() => {
-    if (path !== '/') return
-
-    const sectionIds = ['geek-hoppers', 'about', 'engineering', 'research', 'contact']
-
-    const checkActiveSection = () => {
-      const scrollY = window.scrollY
-      const viewportHeight = window.innerHeight
-      // Reference line at ~35% of viewport height below top
-      const triggerY = scrollY + Math.min(240, viewportHeight * 0.35)
-
-      let current: string | null = null
-      for (const id of sectionIds) {
-        const el = document.getElementById(id)
-        if (!el) continue
-        const top = el.offsetTop
-        const height = el.offsetHeight
-        if (triggerY >= top && triggerY < top + height) {
-          current = id
-          break
-        }
-      }
-      setActiveSection(current)
-    }
-
-    checkActiveSection()
-    window.addEventListener('scroll', checkActiveSection, { passive: true })
-    window.addEventListener('resize', checkActiveSection, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', checkActiveSection)
-      window.removeEventListener('resize', checkActiveSection)
-    }
-  }, [path])
-
-  // Mobile menu: scroll lock, Esc to close, focus trap, restore focus.
-  useEffect(() => {
-    if (!open) return
-    const toggle = toggleRef.current
-    const overlay = overlayRef.current
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
-
-    const focusables = () =>
-      Array.from(overlay?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [])
-    focusables()[0]?.focus()
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setOpen(false)
-        return
-      }
-      if (e.key !== 'Tab') return
-      const items = [...focusables(), ...(toggle ? [toggle] : [])]
-      const first = items[0]
-      const last = items[items.length - 1]
-      if (!first || !last) return
-      const active = document.activeElement
-      if (e.shiftKey && active === first) {
-        e.preventDefault()
-        last.focus()
-      } else if (!e.shiftKey && active === last) {
-        e.preventDefault()
-        first.focus()
-      }
-    }
-    const onResize = () => {
-      if (window.innerWidth >= 768) setOpen(false)
-    }
-    document.addEventListener('keydown', onKey)
-    window.addEventListener('resize', onResize)
-    return () => {
-      document.body.style.overflow = prevOverflow
-      document.removeEventListener('keydown', onKey)
-      window.removeEventListener('resize', onResize)
-      toggle?.focus()
-    }
-  }, [open])
-
-  const { links, cta } = site.nav
+  const isLinkActive = (href: string) => {
+    if (href === '/') return path === '/'
+    return path === href || path.startsWith(`${href}/`)
+  }
 
   return (
-    <header
-      className={`sticky top-0 z-50 border-b bg-bg transition-colors duration-300 ${
-        scrolled && !open ? 'border-hairline' : 'border-transparent'
-      }`}
-    >
-      <div className="container-page flex h-16 items-center justify-between gap-6">
-        <Link
-          to="/"
-          className="font-display text-[0.95rem] font-medium tracking-[0.04em] text-ink"
-          aria-label="THE GEEK HARSH — Home"
-        >
-          {site.wordmark}
-        </Link>
+    <>
+      <header className="sticky top-0 z-50 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant">
+        <div className="max-w-[1160px] mx-auto px-gutter-mobile lg:px-gutter h-16 flex items-center justify-between gap-space-md">
+          {/* Brand Left */}
+          <div className="flex items-center gap-space-sm">
+            <Link to="/" className="flex items-center gap-space-sm group" aria-label="The Geek Harsh">
+              <span aria-hidden="true" className="w-8 h-8 rounded-lg bg-surface-container border border-outline-variant flex items-center justify-center font-display-hero font-bold text-primary text-[13px] tracking-tight group-hover:border-primary transition-colors">
+                GH
+              </span>
+              <span className="font-headline-sm text-headline-sm text-on-surface tracking-tight group-hover:text-primary transition-colors font-medium">
+                The Geek Harsh<span className="text-primary font-bold">.</span>
+              </span>
+            </Link>
+          </div>
 
-        {/* Primary Desktop Navigation */}
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
-          {links.map((l) => {
-            const isDedicatedPage = path === l.href
-            const sectionName = l.href.replace('/', '')
-            const isScrolledSection = path === '/' && activeSection === sectionName
-
-            if (isDedicatedPage) {
-              // Page-active animation: sleek, high-contrast dark capsule with layout transition
+          {/* Desktop Navigation Links */}
+          <nav className="hidden xl:flex items-center gap-1">
+            {NAV_LINKS.map((link) => {
+              const active = isLinkActive(link.href)
               return (
                 <Link
-                  key={l.href}
-                  to={l.href}
-                  className="relative flex min-h-[44px] items-center"
+                  key={link.href}
+                  to={link.href}
+                  aria-current={active ? 'page' : undefined}
+                  className={`font-body-sm text-body-sm px-2.5 py-1 rounded-lg transition-colors ${
+                    active
+                      ? 'text-primary font-medium bg-surface-container'
+                      : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low'
+                  }`}
                 >
-                  <m.span
-                    layoutId="nav-page-active"
-                    className="inline-flex items-center gap-1.5 rounded-sm bg-ink px-3 py-1 text-xs font-medium uppercase tracking-wider text-bg shadow-none"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  >
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                    <span>{l.label}</span>
-                  </m.span>
+                  {link.label}
                 </Link>
               )
-            }
+            })}
 
-            // Scroll-active or standard state:
-            // When scrolled to this section on the landing page, the hover-style underline activates!
-            return (
-              <Link
-                key={l.href}
-                to={l.href}
-                className={`link-u flex min-h-[44px] items-center text-sm transition-colors ${
-                  isScrolledSection ? 'link-u-scroll-active font-medium text-ink' : 'text-ink/80 hover:text-ink'
-                }`}
-              >
-                <span>{l.label}</span>
-              </Link>
-            )
-          })}
-        </nav>
+            {/* Discreet Geek Hoppers link per user instruction */}
+            <a
+              href={SITE_METADATA.geekHoppersUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Geek Hoppers official website (opens in new tab)"
+              className="font-body-sm text-[0.8125rem] text-outline hover:text-primary px-2.5 py-1 transition-colors inline-flex items-center gap-1 ml-1"
+            >
+              <span>Geek Hoppers</span>
+              <span className="text-[0.7rem] leading-none">↗</span>
+            </a>
+          </nav>
 
-        {/* CTA and Mobile Hamburger */}
-        <div className="flex items-center gap-3">
-          <Link
-            to={cta.href}
-            className={`btn hidden min-h-[44px] px-5 py-2 text-sm md:inline-flex ${
-              path === cta.href
-                ? 'bg-accent text-ink hover:bg-accent/90'
-                : 'bg-ink text-bg hover:bg-ink/85'
-            }`}
-          >
-            {cta.label}
-          </Link>
-          <button
-            ref={toggleRef}
-            type="button"
-            className="relative z-[60] -mr-2 flex h-11 w-11 items-center justify-center md:hidden"
-            aria-expanded={open}
-            aria-controls="mobile-menu"
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span aria-hidden="true" className="relative block h-3 w-6">
-              <span
-                className={`absolute left-0 h-[2px] w-6 bg-ink transition-transform duration-200 ${
-                  open ? 'top-[5px] rotate-45' : 'top-0'
-                }`}
-              />
-              <span
-                className={`absolute left-0 h-[2px] w-6 bg-ink transition-transform duration-200 ${
-                  open ? 'top-[5px] -rotate-45' : 'top-[10px]'
-                }`}
-              />
-            </span>
-          </button>
+          {/* Right Action Controls */}
+          <div className="flex items-center gap-space-xs sm:gap-space-sm">
+            {/* Color Mode Toggle */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              suppressHydrationWarning
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+              className="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
+            >
+              <span suppressHydrationWarning className="material-symbols-outlined text-[20px]">
+                {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+              </span>
+            </button>
+
+            {/* View Résumé Button */}
+            <Link
+              to="/resume"
+              className="hidden sm:inline-flex items-center justify-center px-space-md py-1.5 border border-outline-variant hover:border-secondary hover:bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-xl transition-all shadow-sm"
+            >
+              View résumé
+            </Link>
+
+            {/* Mobile Hamburger Toggle */}
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen((prev) => !prev)}
+              aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={mobileMenuOpen}
+              className="xl:hidden w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
+            >
+              <span className="material-symbols-outlined text-[24px]">
+                {mobileMenuOpen ? 'close' : 'menu'}
+              </span>
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* Mobile Menu Overlay */}
-      {open && (
+      {/* Mobile Drawer Overlay */}
+      {mobileMenuOpen && (
         <div
-          ref={overlayRef}
-          id="mobile-menu"
           role="dialog"
           aria-modal="true"
-          aria-label="Menu"
-          className="fixed inset-0 top-16 z-50 flex flex-col overflow-y-auto bg-bg px-5 pb-10 pt-6 md:hidden"
+          aria-label="Mobile navigation menu"
+          className="xl:hidden fixed inset-0 top-16 z-40 bg-surface/95 backdrop-blur-xl border-b border-outline-variant p-space-lg flex flex-col justify-between overflow-y-auto animate-in fade-in duration-200"
         >
-          <nav aria-label="Mobile">
-            <ul className="border-t border-hairline">
-              {links.map((l) => {
-                const isDedicatedPage = path === l.href
-                return (
-                  <li key={l.href} className="border-b border-hairline">
-                    <Link
-                      to={l.href}
-                      onClick={() => setOpen(false)}
-                      className={`flex min-h-[52px] items-center justify-between py-4 font-display text-[clamp(2rem,10vw,3.25rem)] font-medium leading-none tracking-tight ${
-                        isDedicatedPage ? 'text-accent' : 'text-ink'
-                      }`}
-                    >
-                      <span>{l.label}</span>
-                      {isDedicatedPage && (
-                        <span className="text-sm font-sans uppercase tracking-widest text-muted">
-                          [Active Page]
-                        </span>
-                      )}
-                    </Link>
-                  </li>
-                )
-              })}
-            </ul>
+          <nav className="flex flex-col gap-2">
+            {NAV_LINKS.map((link) => {
+              const active = isLinkActive(link.href)
+              return (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`text-headline-md font-display-hero py-2 px-3 rounded-lg transition-colors flex items-center justify-between ${
+                    active
+                      ? 'text-primary font-semibold bg-surface-container'
+                      : 'text-on-surface hover:text-primary hover:bg-surface-container-low'
+                  }`}
+                >
+                  <span>{link.label}</span>
+                  {active && <span className="w-2 h-2 rounded-full bg-primary" />}
+                </Link>
+              )
+            })}
+
+            <div className="pt-space-sm border-t border-outline-variant/60 mt-space-sm">
+              <a
+                href={SITE_METADATA.geekHoppersUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body-md text-on-surface-variant hover:text-primary py-2 px-3 flex items-center justify-between"
+              >
+                <span>Geek Hoppers ↗</span>
+                <span className="font-meta-tag text-meta-tag uppercase text-outline">Company</span>
+              </a>
+            </div>
           </nav>
-          <Link
-            to={cta.href}
-            onClick={() => setOpen(false)}
-            className="btn mt-10 w-full bg-ink text-bg"
-          >
-            {cta.label}
-          </Link>
+
+          <div className="pt-space-md border-t border-outline-variant flex flex-col gap-space-sm mt-space-lg">
+            <div className="flex items-center justify-between py-2 px-1">
+              <span className="font-body-sm text-on-surface">Color appearance</span>
+              <button
+                type="button"
+                onClick={toggleTheme}
+                aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface text-body-sm hover:bg-surface-container transition-colors"
+              >
+                <span className="material-symbols-outlined text-[18px]">
+                  {theme === 'dark' ? 'light_mode' : 'dark_mode'}
+                </span>
+                <span>{theme === 'dark' ? 'Light mode' : 'Dark mode'}</span>
+              </button>
+            </div>
+            <Link
+              to="/resume"
+              className="w-full inline-flex items-center justify-center py-2.5 rounded-xl bg-primary text-on-primary font-body-sm text-body-sm font-medium shadow-sm hover:bg-secondary transition-colors"
+            >
+              View résumé
+            </Link>
+            <div className="flex items-center justify-between text-outline font-label-code text-[0.75rem] pt-1">
+              <span>{SITE_METADATA.location}</span>
+              <a href={gmailComposeUrl(SITE_METADATA.email)} className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                {SITE_METADATA.email}
+              </a>
+            </div>
+          </div>
         </div>
       )}
-    </header>
+    </>
   )
 }

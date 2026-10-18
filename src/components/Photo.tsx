@@ -14,7 +14,7 @@ interface PhotoProps {
   caption?: string
 }
 
-const WIDTHS = [480, 800, 1024]
+const WIDTHS = [480, 800, 1200]
 
 const srcset = (src: string, ext: string) =>
   WIDTHS.map((w) => `${src}-${w}.${ext} ${w}w`).join(', ')

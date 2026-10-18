@@ -7,6 +7,36 @@
     <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap"
+      />
+    </noscript>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('theme')
+          if (
+            theme === 'dark' ||
+            (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          ) {
+            document.documentElement.classList.add('dark')
+          } else {
+            document.documentElement.classList.remove('dark')
+          }
+        } catch (_) {}
+      })()
+    </script>
     <!--helmet-->
     <!--preload-->
     <script type="application/ld+json">
@@ -17,17 +47,21 @@
             "@type": "Person",
             "@id": "https://thegeekharsh.in/#person",
             "name": "Harsh Sinha",
-            "jobTitle": "Founder & CEO",
+            "alternateName": "The Geek Harsh",
+            "jobTitle": "Software Engineer",
             "url": "https://thegeekharsh.in",
-            "worksFor": { "@id": "https://www.geekhoppers.com/#organization" },
-            "sameAs": ["https://www.linkedin.com/in/harshsinhaa/"]
+            "alumniOf": "IMS Engineering College",
+            "sameAs": [
+              "https://www.linkedin.com/in/thegeekharsh/",
+              "https://www.linkedin.com/in/harshsinhaa/"
+            ]
           },
           {
-            "@type": "Organization",
-            "@id": "https://www.geekhoppers.com/#organization",
-            "name": "Geek Hoppers",
-            "url": "https://www.geekhoppers.com",
-            "founder": { "@id": "https://thegeekharsh.in/#person" }
+            "@type": "WebSite",
+            "@id": "https://thegeekharsh.in/#website",
+            "url": "https://thegeekharsh.in",
+            "name": "The Geek Harsh",
+            "author": { "@id": "https://thegeekharsh.in/#person" }
           }
         ]
       }

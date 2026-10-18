@@ -1,6 +1,7 @@
 import { site } from '../content/site'
 import { Reveal } from '../components/Reveal'
 import { Link } from '../router'
+import { gmailComposeUrl } from '../utils/gmail'
 
 export function Contact() {
   const c = site.contact
@@ -18,7 +19,9 @@ export function Contact() {
         </Reveal>
 
         <a
-          href={`mailto:${c.email}`}
+          href={gmailComposeUrl(c.email)}
+          target="_blank"
+          rel="noopener noreferrer"
           className="link-u link-u-on mt-12 break-words font-display text-mail md:mt-20"
         >
           <span>{c.email}</span>

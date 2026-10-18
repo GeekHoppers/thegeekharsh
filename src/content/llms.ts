@@ -1,37 +1,52 @@
-import { GEEK_HOPPERS_URL, LINKEDIN_URL, PAPER_URL, SITE_URL, entity, faq, site } from './site'
+import { GEEK_HOPPERS_URL, LINKEDIN_URL, PAPER_URL, SITE_URL, faq, site } from './site'
+
 
 /** Concise llms.txt (llmstxt.org format): a curated entry point for LLM crawlers and agents. */
 export function buildLlmsTxt(): string {
-  const { geekHoppers, research, contact, now } = site
   return `# Harsh Sinha — The Geek Harsh
 
-> ${entity.description} This is his personal site (${SITE_URL}). He is also known as The Geek Harsh.
+> Harsh Sinha is a Software Engineer specializing in enterprise web platforms (Adobe Experience Manager, Edge Delivery Services), full-stack architectures, and applied AI research. This is his official engineering portfolio and knowledge archive (https://thegeekharsh.in).
 
-Last updated: ${now.lastUpdated}.
+Last updated: October 2026.
 
-## Pages
-- [Home Overview](${SITE_URL}/): Full profile and technology platform overview.
-- [Geek Hoppers](${SITE_URL}/geek-hoppers): Dedicated company deep-dive, capabilities, and client work.
-- [About Harsh Sinha](${SITE_URL}/about): Full story, philosophy, builder mindset, and career path.
-- [Engineering Architecture](${SITE_URL}/engineering): Deep-dive into AEM, backend systems, and computer vision.
-- [Research & Publications](${SITE_URL}/research): Real-Time Threat Detection System for Campus Security (CRC Press 2025).
-- [Contact & Collaboration](${SITE_URL}/contact): Direct communication channels and enterprise inquiries.
-- [Plain-Text Archive](${SITE_URL}/llms-full.txt): Complete site content in Markdown.
+## Canonical Routes & Navigation
+- [Home Overview](https://thegeekharsh.in/): Software engineering positioning, selected work, capabilities, and bio.
+- [About](https://thegeekharsh.in/about): Background, engineering philosophy, and technical path.
+- [Projects Index](https://thegeekharsh.in/projects): Overview of enterprise web platforms, full-stack systems, and research implementations.
+- [Case Study: GMR Web Platform](https://thegeekharsh.in/projects/gmr-web-platform): AEM Edge Delivery Services with Universal Editor, custom content blocks, interactive features. Completed in 2026.
+- [Case Study: Oliver Wyman](https://thegeekharsh.in/projects/oliver-wyman): AEM 6.5 Managed Services, Sling Models, HTL, DAM workflows, metadata automation, asset-upload limits. Currently under active development.
+- [Case Study: DataJam Portal](https://thegeekharsh.in/projects/datajam-portal): Portal UI, Django backend, REST APIs, Model Context Protocol (MCP) data access.
+- [Case Study: CareerIens](https://thegeekharsh.in/projects/careeriens): Next.js and React responsive frontend application.
+- [Case Study: Garun Drishti](https://thegeekharsh.in/projects/garun-drishti): Real-time threat detection prototype using OpenCV, YOLOv8, and MediaPipe.
+- [Experience](https://thegeekharsh.in/experience): Professional track record at Bluethink Inc. and Iktara Data Science.
+- [Skills](https://thegeekharsh.in/skills): Technical competencies across enterprise web, full-stack development, and applied AI.
+- [Research Index](https://thegeekharsh.in/research): Academic research and computer vision publications.
+- [Publication Dossier](https://thegeekharsh.in/research/real-time-threat-detection): CRC Press peer-reviewed book chapter on real-time threat detection (ISBN 9781041318422, DOI 10.1201/9781003781011).
+- [Writing & Dispatches](https://thegeekharsh.in/writing): Technical essays and architectural field notes.
+- [Article: AEM Edge Delivery Blocks](https://thegeekharsh.in/writing/designing-maintainable-blocks-in-aem-edge-delivery-services): Architectural best practices for maintainable blocks.
+- [Field Note: DAM Workflows in AEM](https://thegeekharsh.in/writing/debugging-event-driven-dam-workflows-in-aem): Event-driven DAM workflows and metadata automation.
+- [Field Note: Asset Upload Limits](https://thegeekharsh.in/writing/reasoning-about-asset-upload-limits): Systems reasoning about asset-upload limits in CMS architectures.
+- [Field Note: MCP Data Portal](https://thegeekharsh.in/writing/lessons-from-building-a-conversational-data-portal): Lessons from conversational data access with MCP.
+- [Field Note: Computer Vision Limits](https://thegeekharsh.in/writing/what-a-computer-vision-prototype-can-and-cannot-prove): Academic prototyping vs production safety constraints.
+- [Printable Résumé](https://thegeekharsh.in/resume): Verified engineering background, skills, and education.
+- [Contact](https://thegeekharsh.in/contact): Direct contact channels.
+- [Complete Plain-Text Archive](https://thegeekharsh.in/llms-full.txt): Comprehensive plain-text documentation for AI agents.
 
-## Key facts
-- Name: ${site.name} (${entity.alternateName})
-- Role: ${entity.jobTitle}, Geek Hoppers; software engineer
-- Company: Geek Hoppers, a technology company founded in January 2026 — ${GEEK_HOPPERS_URL}
-- Services of Geek Hoppers: ${geekHoppers.services.map((s) => s.title).join('; ')}
-- Education: B.Tech, Computer Science & Engineering, ${entity.alumniOf} (2021–2025)
-- Research: "${research.title}" — ${entity.paperBook}, ${entity.paperPublisher}, ${entity.paperYear} — ${PAPER_URL}
+## Key Facts & Background
+- Name: Harsh Sinha (The Geek Harsh)
+- Title: Software Engineer · Enterprise Web Platforms & Applied AI
+- Affiliation: Bluethink Inc. (Software Engineer); Founder of Geek Hoppers (https://www.geekhoppers.com)
+- Education: B.Tech in Computer Science & Engineering, IMS Engineering College (2021–2025)
+- Published Research: "Real-Time Threat Detection System for Campus Security Using Integrated Computer Vision Techniques", Book Chapter in *Integrated Technologies in Electrical, Electronics and Biotechnology Engineering*, CRC Press / Routledge, 2026. ISBN: 9781041318422. DOI: 10.1201/9781003781011. DOI URL: https://doi.org/10.1201/9781003781011. Routledge: https://www.routledge.com/Integrated-Technologies-in-Electrical-Electronics-and-Biotechnology-Engineering-Volume-1/Aggarwal-Shukla-EweanDavidson-Bansal/p/book/9781041318422
 
-## Contact
-- Projects: ${contact.email} and ${GEEK_HOPPERS_URL}
-- Speaking, media, collaboration: media@thegeekharsh.in
-- LinkedIn: ${LINKEDIN_URL}
+## Contact Channels
+- Direct Email: hello@thegeekharsh.in
+- Media, Speaking & Press: media@thegeekharsh.in
+- LinkedIn: https://www.linkedin.com/in/thegeekharsh/
+- GitHub: https://github.com/thegeekharsh
 `
 }
+
 
 /** Full Markdown rendering of the site's content, derived from src/content/site.ts. */
 export function buildLlmsFullTxt(): string {
