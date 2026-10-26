@@ -20,7 +20,7 @@ export function ArticleDamWorkflowsPage() {
   }, [])
 
   const handleCopyPermalink = () => {
-    const url = typeof window !== 'undefined' ? window.location.href : 'https://thegeekharsh.in/writing/debugging-event-driven-dam-workflows-in-aem'
+    const url = typeof window !== 'undefined' ? window.location.href : 'https://www.thegeekharsh.in/writing/debugging-event-driven-dam-workflows-in-aem'
     navigator.clipboard.writeText(url).then(() => {
       setCopiedLink(true)
       setTimeout(() => setCopiedLink(false), 2200)
@@ -324,20 +324,20 @@ public class DebouncedAssetEventHandler implements EventHandler {
                 modifications or CPU-intensive image routines inline.
               </p>
 
-              <div className="my-space-md bg-inverse-surface rounded-xl overflow-hidden shadow-md border border-outline-variant/30">
-                <div className="bg-[#1a231b] px-space-md py-space-xs flex items-center justify-between text-on-surface-variant font-label-code text-label-code">
+              <div className="my-space-md bg-[#0f1610] rounded-xl overflow-hidden shadow-md border border-[#233125]">
+                <div className="bg-[#172018] border-b border-[#233125] px-space-md py-space-xs flex items-center justify-between font-label-code text-label-code">
                   <div className="flex items-center gap-space-xs">
                     <span className="w-2.5 h-2.5 rounded-full bg-error" />
                     <span className="w-2.5 h-2.5 rounded-full bg-primary-fixed" />
                     <span className="w-2.5 h-2.5 rounded-full bg-secondary" />
-                    <span className="ml-space-xs text-inverse-on-surface">
+                    <span className="ml-space-xs text-[#dbe6d7] font-medium">
                       DebouncedAssetEventHandler.java
                     </span>
                   </div>
                   <button
                     type="button"
                     onClick={() => handleCopyCode(osgiSnippet)}
-                    className="hover:text-inverse-on-surface transition-colors cursor-pointer"
+                    className="text-[#9bb297] hover:text-[#f2f7f0] transition-colors cursor-pointer"
                     title="Copy code"
                   >
                     <span className="material-symbols-outlined text-[16px]">
@@ -345,7 +345,7 @@ public class DebouncedAssetEventHandler implements EventHandler {
                     </span>
                   </button>
                 </div>
-                <pre className="p-space-md font-label-code text-label-code overflow-x-auto text-[#cbeca3] leading-relaxed">
+                <pre className="p-space-md bg-[#0d140e] font-label-code text-label-code overflow-x-auto text-[#cbeca3] leading-relaxed selection:bg-[#385026] selection:text-white">
                   <code>{osgiSnippet}</code>
                 </pre>
               </div>

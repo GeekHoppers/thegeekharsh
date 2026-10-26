@@ -48,5 +48,5 @@ Allow: /
 User-agent: MistralAI-User
 Allow: /
 
-Sitemap: https://thegeekharsh.in/sitemap.xml
-# LLMs-Txt: https://thegeekharsh.in/llms.txt
+Sitemap: https://www.thegeekharsh.in/sitemap.xml
+# LLMs-Txt: https://www.thegeekharsh.in/llms.txt

@@ -7,7 +7,7 @@ export function GeekHoppersPage() {
   const pageTitle = 'Geek Hoppers — Technology Company | Harsh Sinha'
   const pageDesc =
     'Geek Hoppers is a technology company founded in January 2026 by Harsh Sinha. Websites, AI workflows, data products, and enterprise Adobe Experience Manager solutions.'
-  const canonicalUrl = 'https://thegeekharsh.in/geek-hoppers'
+  const canonicalUrl = 'https://www.thegeekharsh.in/geek-hoppers'
 
   const structuredData = buildPageJsonLd({
     url: canonicalUrl,
@@ -15,7 +15,7 @@ export function GeekHoppersPage() {
     description: pageDesc,
     type: 'OrganizationPage',
     breadcrumb: [
-      { name: 'Home', url: 'https://thegeekharsh.in/' },
+      { name: 'Home', url: 'https://www.thegeekharsh.in/' },
       { name: 'Geek Hoppers', url: canonicalUrl },
     ],
   })

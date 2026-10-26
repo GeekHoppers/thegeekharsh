@@ -8,6 +8,7 @@ interface SEOProps {
   canonical?: string
   type?: string
   ogImage?: string
+  noindex?: boolean
   article?: {
     publishedTime?: string
     author?: string
@@ -15,7 +16,7 @@ interface SEOProps {
   }
 }
 
-export function SEO({ title, description, path, canonical, type, ogImage, article }: SEOProps) {
+export function SEO({ title, description, path, canonical, type, ogImage, noindex, article }: SEOProps) {
   const fullTitle = title
     ? `${title} — ${SITE_METADATA.brandName}`
     : `${SITE_METADATA.name} — ${SITE_METADATA.brandName}`
@@ -33,7 +34,11 @@ export function SEO({ title, description, path, canonical, type, ogImage, articl
       <meta name="author" content={SITE_METADATA.name} />
       <meta
         name="robots"
-        content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        content={
+          noindex
+            ? 'noindex, nofollow'
+            : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        }
       />
       <meta name="theme-color" content="#f1fdee" />
       <link rel="canonical" href={canonicalUrl} />

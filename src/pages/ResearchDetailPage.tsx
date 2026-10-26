@@ -822,7 +822,7 @@ export function ResearchDetailPage() {
                       <span>{copiedBibtex ? 'Copied BibTeX!' : 'Copy BibTeX'}</span>
                     </button>
                   </div>
-                  <div className="bg-inverse-surface text-inverse-on-surface rounded-xl p-space-md overflow-x-auto shadow-inner">
+                  <div className="bg-[#0f1610] text-[#cbeca3] border border-[#233125] rounded-xl p-space-md overflow-x-auto shadow-inner">
                     <pre className="font-label-code text-label-code leading-relaxed text-left">
                       <code>{PUBLICATION.bibtex}</code>
                     </pre>

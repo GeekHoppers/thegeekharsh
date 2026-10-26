@@ -86,5 +86,22 @@ try {
   console.warn('llms text generation notice:', e)
 }
 
+// Generate canonical XML sitemap
+const sitemapRoutes = routes.filter((r) => r !== '/404')
+const sitemapXml = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...sitemapRoutes.map((r) => {
+    const loc = r === '/' ? 'https://www.thegeekharsh.in/' : `https://www.thegeekharsh.in${r}`
+    return `  <url>\n    <loc>${loc}</loc>\n  </url>`
+  }),
+  '</urlset>',
+  '',
+].join('\n')
+
+writeFileSync(resolve(dist, 'sitemap.xml'), sitemapXml)
+writeFileSync(resolve(root, 'public', 'sitemap.xml'), sitemapXml)
+console.log(`Generated canonical sitemap.xml with ${sitemapRoutes.length} URLs.`)
+
 rmSync(resolve(root, 'dist-ssr'), { recursive: true, force: true })
 console.log(`Static pre-rendering completed for all ${routes.length} routes.`)

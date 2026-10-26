@@ -7,7 +7,7 @@ export function EngineeringPage() {
   const pageTitle = 'Engineering Architecture & Systems — Harsh Sinha'
   const pageDesc =
     'Engineering principles, architecture, and technology stack spanning Adobe Experience Manager (AEM), Java, Spring Boot, Python, and AI/Computer Vision.'
-  const canonicalUrl = 'https://thegeekharsh.in/engineering'
+  const canonicalUrl = 'https://www.thegeekharsh.in/engineering'
 
   const structuredData = buildPageJsonLd({
     url: canonicalUrl,
@@ -15,7 +15,7 @@ export function EngineeringPage() {
     description: pageDesc,
     type: 'WebPage',
     breadcrumb: [
-      { name: 'Home', url: 'https://thegeekharsh.in/' },
+      { name: 'Home', url: 'https://www.thegeekharsh.in/' },
       { name: 'Engineering', url: canonicalUrl },
     ],
   })

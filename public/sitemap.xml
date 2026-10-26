@@ -1,39 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thegeekharsh.in/</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://www.thegeekharsh.in/</loc>
   </url>
   <url>
-    <loc>https://thegeekharsh.in/geek-hoppers</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.thegeekharsh.in/about</loc>
   </url>
   <url>
-    <loc>https://thegeekharsh.in/about</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.thegeekharsh.in/projects</loc>
   </url>
   <url>
-    <loc>https://thegeekharsh.in/engineering</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.thegeekharsh.in/projects/gmr-web-platform</loc>
   </url>
   <url>
-    <loc>https://thegeekharsh.in/research</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.thegeekharsh.in/projects/oliver-wyman</loc>
   </url>
   <url>
-    <loc>https://thegeekharsh.in/contact</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.thegeekharsh.in/projects/datajam-portal</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/projects/careeriens</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/projects/garun-drishti</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/experience</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/skills</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/research</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/research/real-time-threat-detection</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/writing</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/writing/designing-maintainable-blocks-in-aem-edge-delivery-services</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/writing/debugging-event-driven-dam-workflows-in-aem</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/writing/reasoning-about-asset-upload-limits</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/writing/lessons-from-building-a-conversational-data-portal</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/writing/what-a-computer-vision-prototype-can-and-cannot-prove</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/resume</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/contact</loc>
+  </url>
+  <url>
+    <loc>https://www.thegeekharsh.in/privacy</loc>
   </url>
 </urlset>

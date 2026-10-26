@@ -136,15 +136,15 @@ export function GmrCaseStudyPage() {
             </div>
 
             {/* Code Spec Card */}
-            <div className="md:col-span-4 bg-inverse-surface text-inverse-on-surface rounded-xl p-space-lg shadow-md flex flex-col justify-between">
+            <div className="md:col-span-4 bg-[#0f1610] text-[#dbe6d7] border border-[#233125] rounded-xl p-space-lg shadow-md flex flex-col justify-between">
               <div className="flex flex-col gap-space-sm">
                 <div className="flex items-center justify-between pb-space-xs">
                   <span className="font-meta-tag text-meta-tag uppercase tracking-widest text-secondary-fixed">
                     EDS Pipeline Structure
                   </span>
-                  <span className="font-label-code text-meta-tag text-surface-dim">scripts.js</span>
+                  <span className="font-label-code text-meta-tag text-[#9bb297]">scripts.js</span>
                 </div>
-                <p className="font-label-code text-label-code text-surface-container-high leading-relaxed">
+                <p className="font-label-code text-label-code text-[#cbeca3] leading-relaxed">
                   // Core Block Invocation
                   <br />
                   export default function decorate(block) &#123;
@@ -159,7 +159,7 @@ export function GmrCaseStudyPage() {
                 </p>
               </div>
               <div className="pt-space-md">
-                <div className="bg-surface-variant/20 rounded p-space-sm">
+                <div className="bg-[#172018] border border-[#233125] rounded p-space-sm">
                   <span className="font-meta-tag text-meta-tag uppercase tracking-wider text-secondary-fixed block">
                     Architecture Pattern
                   </span>

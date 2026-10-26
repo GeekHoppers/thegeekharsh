@@ -54,7 +54,7 @@ export const PAPER_DOI_URL = 'https://doi.org/10.1201/9781003781011'
 export const PAPER_URL =
   'https://www.routledge.com/Integrated-Technologies-in-Electrical-Electronics-and-Biotechnology-Engineering-Volume-1/Aggarwal-Shukla-EweanDavidson-Bansal/p/book/9781041318422'
 
-export const SITE_URL = 'https://thegeekharsh.in'
+export const SITE_URL = 'https://www.thegeekharsh.in'
 export const GEEK_HOPPERS_URL = 'https://www.geekhoppers.com'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/harshsinhaa/'
 

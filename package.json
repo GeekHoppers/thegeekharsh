@@ -6,9 +6,10 @@
   "description": "Personal brand site for Harsh Sinha - THE GEEK HARSH",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/optimize-images.mjs && tsc --noEmit && vite build --outDir dist && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "build": "node scripts/optimize-images.mjs && tsc --noEmit && vite build --outDir dist && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs && node scripts/verify-seo.mjs",
     "preview": "vite preview --port 5173",
     "lint": "eslint .",
+    "test:seo": "node scripts/verify-seo.mjs",
 
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",

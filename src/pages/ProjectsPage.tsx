@@ -562,23 +562,23 @@ function ProjectCard({ project }: { project: ProjectItem }) {
             <span className="font-meta-tag text-meta-tag uppercase text-outline">Pipeline Overview</span>
             <span className="font-label-code text-label-code text-primary font-medium">Prototype</span>
           </div>
-          <div className="relative bg-inverse-surface rounded p-3 text-inverse-on-surface font-label-code text-[0.75rem] overflow-hidden">
+          <div className="relative bg-[#0f1610] border border-[#233125] rounded p-3 text-[#dbe6d7] font-label-code text-[0.75rem] overflow-hidden">
             <div className="flex justify-between items-center mb-2">
-              <span className="text-tertiary-fixed-dim font-bold flex items-center gap-1">
+              <span className="text-[#a8ce8e] font-bold flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                 Video Input Pipeline
               </span>
               <span className="text-outline-variant">Webcam Stream</span>
             </div>
-            <div className="border border-dashed border-tertiary-fixed-dim/40 rounded p-2 mb-2">
-              <div className="flex justify-between text-[0.6875rem] text-tertiary-fixed-dim">
+            <div className="border border-dashed border-[#a8ce8e]/30 rounded p-2 mb-2">
+              <div className="flex justify-between text-[0.6875rem] text-[#cbeca3]">
                 <span>Pose Landmark Extraction</span>
               </div>
-              <div className="h-6 flex items-center justify-center text-outline-variant text-[0.6875rem]">
+              <div className="h-6 flex items-center justify-center text-[#9bb297] text-[0.6875rem]">
                 Gesture Vector Detection Model
               </div>
             </div>
-            <div className="flex justify-between text-[0.6875rem] text-outline-variant">
+            <div className="flex justify-between text-[0.6875rem] text-[#9bb297]">
               <span>Object &amp; Face Detection</span>
               <span>Alert Dispatch</span>
             </div>

@@ -89,6 +89,7 @@ export function NotFoundPage() {
         title="404 — Page Not Found — The Geek Harsh"
         description="The requested waypoint does not exist in this deployment. Navigate verified architectural routes across The Geek Harsh."
         canonical="/404"
+        noindex={true}
       />
 
       <section className="w-full pt-8 pb-12 border-b border-outline-variant/30 bg-surface-container-low/40">

@@ -277,9 +277,9 @@ export function OliverWymanCaseStudyPage() {
               </div>
 
               {/* Java Sling Model Snippet */}
-              <div className="rounded-xl overflow-hidden bg-inverse-surface text-inverse-on-surface shadow-md">
-                <div className="px-space-md py-space-xs bg-surface-variant/20 flex items-center justify-between">
-                  <div className="flex items-center gap-space-xs font-label-code text-label-code text-inverse-on-surface/80">
+              <div className="rounded-xl overflow-hidden bg-[#0f1610] border border-[#233125] shadow-md">
+                <div className="px-space-md py-space-xs bg-[#172018] border-b border-[#233125] flex items-center justify-between">
+                  <div className="flex items-center gap-space-xs font-label-code text-label-code text-[#dbe6d7]">
                     <span className="material-symbols-outlined text-[16px] text-secondary-fixed">code</span>
                     <span>core/models/components/LongFormTextModel.java</span>
                   </div>
@@ -287,8 +287,8 @@ export function OliverWymanCaseStudyPage() {
                     Sling Model v12
                   </span>
                 </div>
-                <div className="p-space-md md:p-space-lg font-label-code text-[12px] md:text-label-code overflow-x-auto leading-relaxed">
-                  <pre className="text-inverse-on-surface/90">
+                <div className="p-space-md md:p-space-lg bg-[#0d140e] font-label-code text-[12px] md:text-label-code overflow-x-auto leading-relaxed">
+                  <pre className="text-[#cbeca3]">
                     <code>
                       {`package com.client.core.models.components;
 

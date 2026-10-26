@@ -115,7 +115,7 @@ export const SITE_METADATA = {
   title: 'Harsh Sinha — Software Engineer · Enterprise Web & Applied AI',
   description:
     'Software engineer working across enterprise web platforms (AEM 6.5, Edge Delivery Services), full-stack systems, and applied AI research.',
-  url: 'https://thegeekharsh.in',
+  url: 'https://www.thegeekharsh.in',
   email: 'hello@thegeekharsh.in',
   mediaEmail: 'media@thegeekharsh.in',
   linkedinUrl: 'https://www.linkedin.com/in/thegeekharsh/',
