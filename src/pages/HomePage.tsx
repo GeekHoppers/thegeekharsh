@@ -79,7 +79,7 @@ export function HomePage() {
                   <div className="relative w-full overflow-hidden rounded-lg border border-outline-variant/60 bg-surface-container-lowest">
                     <Photo
                       src="/images/harsh-portrait"
-                      alt="Harsh Sinha — Software Engineer & Founder"
+                      alt="Harsh Sinha — Software Engineer"
                       width={1024}
                       height={866}
                       priority

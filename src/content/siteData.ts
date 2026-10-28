@@ -111,14 +111,16 @@ export interface PublicationData {
 
 export const SITE_METADATA = {
   name: 'Harsh Sinha',
-  brandName: 'The Geek Harsh',
+  brandName: 'Harsh Sinha - Software Engineer',
+  siteName: 'Harsh Sinha - Software Engineer',
   title: 'Harsh Sinha — Software Engineer · Enterprise Web & Applied AI',
   description:
     'Software engineer working across enterprise web platforms (AEM 6.5, Edge Delivery Services), full-stack systems, and applied AI research.',
   url: 'https://www.thegeekharsh.in',
   email: 'hello@thegeekharsh.in',
   mediaEmail: 'media@thegeekharsh.in',
-  linkedinUrl: 'https://www.linkedin.com/in/thegeekharsh/',
+  linkedinUrl: 'https://www.linkedin.com/in/thegeekharsh',
+  instagramUrl: 'https://www.instagram.com/thegeekharsh/',
   geekHoppersUrl: 'https://www.geekhoppers.com',
   location: 'Noida, Uttar Pradesh, India',
   timezone: 'Indian Standard Time (IST / UTC+5:30)',

@@ -42,8 +42,8 @@ Last updated: October 2026.
 ## Contact Channels
 - Direct Email: hello@thegeekharsh.in
 - Media, Speaking & Press: media@thegeekharsh.in
-- LinkedIn: https://www.linkedin.com/in/thegeekharsh/
-- GitHub: https://github.com/thegeekharsh
+- LinkedIn: https://www.linkedin.com/in/thegeekharsh
+- Instagram: https://www.instagram.com/thegeekharsh/
 `
 }
 

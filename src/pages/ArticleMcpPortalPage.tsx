@@ -166,7 +166,7 @@ async def query_aggregate_metric(
                   Harsh Sinha
                 </span>
                 <span className="text-primary font-label-code text-label-code text-[11px] bg-secondary-container px-1 rounded">
-                  Staff
+                  Software Engineer
                 </span>
               </div>
             </div>
