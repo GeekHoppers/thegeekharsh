@@ -1,73 +1,162 @@
-import { GEEK_HOPPERS_URL, LINKEDIN_URL, PAPER_URL, SITE_URL, entity, faq, site } from './site'
+import { GEEK_HOPPERS_URL, PAPER_URL, SITE_URL, entity, faq, site } from './site'
 
-const PERSON_ID = `${SITE_URL}/#person`
-const ORG_ID = `${GEEK_HOPPERS_URL}/#organization`
+export const PERSON_ID = `${SITE_URL}/#person`
+export const ORG_ID = `${GEEK_HOPPERS_URL}/#organization`
+export const PORTRAIT_URL = `${SITE_URL}/images/harsh-sinha-software-engineer.png`
+export const LINKEDIN_URL = 'https://www.linkedin.com/in/thegeekharsh'
+export const INSTAGRAM_URL = 'https://www.instagram.com/thegeekharsh/'
+
+export const personEntity = {
+  '@type': 'Person',
+  '@id': PERSON_ID,
+  name: 'Harsh Sinha',
+  alternateName: 'thegeekharsh',
+  jobTitle: 'Software Engineer',
+  image: PORTRAIT_URL,
+  url: `${SITE_URL}/`,
+  sameAs: [LINKEDIN_URL, INSTAGRAM_URL],
+}
+
+export const websiteEntity = {
+  '@type': 'WebSite',
+  '@id': `${SITE_URL}/#website`,
+  url: `${SITE_URL}/`,
+  name: 'Harsh Sinha - Software Engineer',
+  alternateName: ['Harsh Sinha', 'thegeekharsh', 'thegeekharsh.in'],
+  publisher: { '@id': PERSON_ID },
+}
 
 /**
- * schema.org graph built entirely from src/content/site.ts so it always matches visible content.
- * Entities: WebSite, ProfilePage, Person, Organization (Geek Hoppers), ScholarlyArticle, FAQPage.
+ * Builds the page-appropriate, consolidated JSON-LD graph for any given route.
+ * Guarantees exactly one schema script per page without duplication.
+ */
+export function buildRouteJsonLd(opts: {
+  path: string
+  title: string
+  description: string
+  type?: string
+  article?: {
+    publishedTime?: string
+    author?: string
+    tags?: string[]
+  }
+}): Record<string, unknown> {
+  const cleanPath = opts.path.replace(/\/+$/, '') || '/'
+  const canonicalUrl = `${SITE_URL}${cleanPath === '/' ? '/' : cleanPath}`
+
+  if (cleanPath === '/') {
+    // Homepage: WebSite root + Person
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [websiteEntity, personEntity],
+    }
+  }
+
+  if (cleanPath === '/about') {
+    // About page: ProfilePage representing Harsh Sinha
+    const profilePageNode = {
+      '@type': 'ProfilePage',
+      '@id': `${canonicalUrl}#profilepage`,
+      url: canonicalUrl,
+      name: opts.title,
+      description: opts.description,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      mainEntity: { '@id': PERSON_ID },
+    }
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [websiteEntity, profilePageNode, personEntity],
+    }
+  }
+
+  if (cleanPath.startsWith('/writing/')) {
+    // Editorial & Technical Articles
+    const articleNode = {
+      '@type': 'TechArticle',
+      '@id': `${canonicalUrl}#article`,
+      url: canonicalUrl,
+      headline: (opts.title.split('—')[0] ?? opts.title).trim(),
+      description: opts.description,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+      author: { '@id': PERSON_ID },
+      publisher: { '@id': PERSON_ID },
+      inLanguage: 'en',
+      ...(opts.article?.publishedTime ? { datePublished: opts.article.publishedTime } : {}),
+      ...(opts.article?.tags ? { keywords: opts.article.tags.join(', ') } : {}),
+    }
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [websiteEntity, articleNode, personEntity],
+    }
+  }
+
+  if (cleanPath === '/research' || cleanPath.startsWith('/research/')) {
+    const researchNode = {
+      '@type': 'ScholarlyArticle',
+      '@id': `${SITE_URL}/#research`,
+      headline: site.research.title,
+      description: site.research.copy,
+      url: PAPER_URL,
+      datePublished: entity.paperYear,
+      inLanguage: 'en',
+      author: { '@id': PERSON_ID },
+      isPartOf: {
+        '@type': 'Book',
+        name: entity.paperBook,
+        publisher: { '@type': 'Organization', name: entity.paperPublisher },
+        datePublished: entity.paperYear,
+      },
+    }
+    const pageNode = {
+      '@type': 'WebPage',
+      '@id': `${canonicalUrl}#webpage`,
+      url: canonicalUrl,
+      name: opts.title,
+      description: opts.description,
+      isPartOf: { '@id': `${SITE_URL}/#website` },
+    }
+    return {
+      '@context': 'https://schema.org',
+      '@graph': [websiteEntity, pageNode, researchNode, personEntity],
+    }
+  }
+
+  // Standard WebPage for projects, skills, experience, contact, etc.
+  const pageNode = {
+    '@type': opts.type === 'profile' ? 'ProfilePage' : 'WebPage',
+    '@id': `${canonicalUrl}#page`,
+    url: canonicalUrl,
+    name: opts.title,
+    description: opts.description,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [websiteEntity, pageNode, personEntity],
+  }
+}
+
+/**
+ * Legacy/full schema.org graph built entirely from src/content/site.ts.
+ * Preserved for backward compatibility.
  */
 export function buildJsonLd(): Record<string, unknown> {
-  const { geekHoppers, research, contact } = site
+  const { research } = site
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
-      {
-        '@type': 'WebSite',
-        '@id': `${SITE_URL}/#website`,
-        url: SITE_URL,
-        name: 'The Geek Harsh',
-        alternateName: site.wordmark,
-        description: site.seo.description,
-        inLanguage: 'en',
-        publisher: { '@id': PERSON_ID },
-      },
+      websiteEntity,
       {
         '@type': 'ProfilePage',
         '@id': `${SITE_URL}/#profilepage`,
-        url: SITE_URL,
-        name: site.seo.title,
-        inLanguage: 'en',
-        dateModified: entity.dateModified,
+        url: `${SITE_URL}/`,
+        name: 'Harsh Sinha — Software Engineer',
         isPartOf: { '@id': `${SITE_URL}/#website` },
         mainEntity: { '@id': PERSON_ID },
-        about: { '@id': PERSON_ID },
       },
-      {
-        '@type': 'Person',
-        '@id': PERSON_ID,
-        name: site.name,
-        alternateName: entity.alternateName,
-        jobTitle: entity.jobTitle,
-        description: entity.description,
-        url: SITE_URL,
-        image: `${SITE_URL}/images/harsh-portrait.png`,
-        mainEntityOfPage: { '@id': `${SITE_URL}/#profilepage` },
-        email: `mailto:${contact.email}`,
-        worksFor: { '@id': ORG_ID },
-        alumniOf: { '@type': 'CollegeOrUniversity', name: entity.alumniOf },
-        knowsAbout: entity.knowsAbout,
-        sameAs: [LINKEDIN_URL],
-      },
-      {
-        '@type': 'Organization',
-        '@id': ORG_ID,
-        name: 'Geek Hoppers',
-        url: GEEK_HOPPERS_URL,
-        slogan: geekHoppers.tagline,
-        description: geekHoppers.copy,
-        foundingDate: entity.orgFoundingDate,
-        founder: { '@id': PERSON_ID },
-        hasOfferCatalog: {
-          '@type': 'OfferCatalog',
-          name: 'Geek Hoppers services',
-          itemListElement: geekHoppers.services.map((s) => ({
-            '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: s.title, provider: { '@id': ORG_ID } },
-          })),
-        },
-      },
+      personEntity,
       {
         '@type': 'ScholarlyArticle',
         '@id': `${SITE_URL}/#research`,
@@ -135,4 +224,3 @@ export function buildPageJsonLd(opts: {
     '@graph': graph,
   }
 }
-

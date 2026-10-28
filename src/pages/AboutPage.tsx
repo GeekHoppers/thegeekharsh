@@ -1,5 +1,6 @@
 import { Link } from '../router'
 import { SEO } from '../components/SEO'
+import { Photo } from '../components/Photo'
 
 export function AboutPage() {
   return (
@@ -15,7 +16,7 @@ export function AboutPage() {
         {/* Top Hero & Editorial Identity */}
         <section className="py-space-xl relative overflow-hidden">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
-            {/* Left Column: Editorial Statement */}
+            {/* Left Column: Editorial Statement & Portrait */}
             <div className="lg:col-span-7 flex flex-col gap-space-md z-10">
               <div className="flex items-center gap-space-xs">
                 <span className="inline-block w-2 h-2 rounded-full bg-primary" />
@@ -28,9 +29,34 @@ export function AboutPage() {
                 <br />
                 <span className="text-primary italic font-serif">how I build.</span>
               </h1>
-              <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl leading-relaxed">
-                I’m Harsh Sinha, a software engineer interested in building maintainable web experiences, solving backend and integration problems, and exploring practical applications of AI.
-              </p>
+
+              <div className="flex flex-col sm:flex-row gap-space-md items-start sm:items-center pt-space-xs">
+                <div className="w-28 h-28 sm:w-36 sm:h-36 shrink-0 rounded-2xl overflow-hidden border border-outline-variant/40 shadow-md bg-surface-container-high">
+                  <Photo
+                    src="/images/harsh-sinha-software-engineer"
+                    fallbackExt="png"
+                    alt="Harsh Sinha, Software Engineer"
+                    width={1024}
+                    height={956}
+                    widths={[480, 800, 1024]}
+                    priority={true}
+                    sizes="(max-width: 640px) 112px, 144px"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <div className="font-headline-sm text-headline-sm font-semibold text-on-surface">
+                    Harsh Sinha
+                  </div>
+                  <div className="font-label-code text-label-code text-primary font-medium tracking-wide">
+                    Software Engineer
+                  </div>
+                  <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed pt-1">
+                    I’m Harsh Sinha, a software engineer interested in building maintainable web experiences, solving backend and integration problems, and exploring practical applications of AI.
+                  </p>
+                </div>
+              </div>
+
               <div className="flex flex-wrap items-center gap-space-sm pt-space-xs font-label-code text-label-code text-outline">
                 <span className="px-space-sm py-1 bg-surface-container rounded-lg text-on-surface">
                   Noida, Uttar Pradesh, India
@@ -46,7 +72,7 @@ export function AboutPage() {
 
             {/* Right Column: Geometric System Artifact (Architectural abstraction) */}
             <div className="lg:col-span-5 relative mt-space-lg lg:mt-0">
-              <div className="relative w-full aspect-square bg-surface-container-low rounded-xl p-space-lg flex flex-col justify-between overflow-hidden shadow-sm">
+              <div className="relative w-full aspect-auto sm:aspect-square min-h-[350px] bg-surface-container-low rounded-xl p-4 sm:p-space-lg flex flex-col justify-between overflow-hidden shadow-sm">
                 <div className="absolute -top-12 -right-12 w-48 h-48 bg-primary/10 rounded-full blur-2xl pointer-events-none" />
                 <div className="flex justify-between items-center text-outline font-label-code text-label-code">
                   <span>Architecture Overview</span>

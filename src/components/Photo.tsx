@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 interface PhotoProps {
-  /** Path without extension, e.g. "/images/harsh-portrait". Expects .jpg or .png plus generated -480/-800/-1200 .avif/.webp. */
+  /** Path without extension, e.g. "/images/harsh-portrait". Expects .jpg or .png plus generated responsive variants. */
   src: string
   alt: string
   width: number
@@ -12,12 +12,13 @@ interface PhotoProps {
   fit?: 'contain' | 'cover'
   fallbackExt?: 'jpg' | 'png'
   caption?: string
+  widths?: number[]
 }
 
-const WIDTHS = [480, 800, 1200]
+const DEFAULT_WIDTHS = [480, 800, 1200]
 
-const srcset = (src: string, ext: string) =>
-  WIDTHS.map((w) => `${src}-${w}.${ext} ${w}w`).join(', ')
+const srcset = (src: string, ext: string, widths = DEFAULT_WIDTHS) =>
+  widths.map((w) => `${src}-${w}.${ext} ${w}w`).join(', ')
 
 /**
  * Responsive AVIF/WebP/JPG/PNG image with graceful fallback.
@@ -33,6 +34,7 @@ export function Photo({
   sizes,
   fit = 'cover',
   fallbackExt = 'jpg',
+  widths,
 }: PhotoProps) {
   const [failed, setFailed] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
@@ -57,8 +59,8 @@ export function Photo({
         </div>
       ) : (
         <picture>
-          <source type="image/avif" srcSet={srcset(src, 'avif')} sizes={sizes} />
-          <source type="image/webp" srcSet={srcset(src, 'webp')} sizes={sizes} />
+          <source type="image/avif" srcSet={srcset(src, 'avif', widths)} sizes={sizes} />
+          <source type="image/webp" srcSet={srcset(src, 'webp', widths)} sizes={sizes} />
           <img
             ref={imgRef}
             src={`${src}.${fallbackExt}`}

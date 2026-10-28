@@ -27,3 +27,35 @@ for (const name of names) {
   }
   console.log(`optimised ${name}`)
 }
+
+// Process the portrait: harsh-sinha-software-engineer.png
+const newPortraitSrc = resolve(dir, 'harsh-sinha-software-engineer.png')
+if (existsSync(newPortraitSrc)) {
+  const portraitWidths = [480, 800, 1024]
+  for (const w of portraitWidths) {
+    const img = () => sharp(newPortraitSrc).rotate().resize({ width: w, withoutEnlargement: true })
+    await img()
+      .webp({ quality: 82 })
+      .toFile(resolve(dir, `harsh-sinha-software-engineer-${w}.webp`))
+    await img()
+      .avif({ quality: 60 })
+      .toFile(resolve(dir, `harsh-sinha-software-engineer-${w}.avif`))
+  }
+  // Also create a high-quality WebP copy of the full portrait for open-graph or schema
+  await sharp(newPortraitSrc)
+    .rotate()
+    .webp({ quality: 85 })
+    .toFile(resolve(dir, 'harsh-sinha-software-engineer.webp'))
+  console.log('optimised harsh-sinha-software-engineer variants')
+}
+
+// Ensure harsh-sinha-thegeekharsh.webp is created for schema.org ProfilePage Person entity
+const primaryPortrait = resolve(dir, 'harsh-portrait.jpg')
+if (existsSync(primaryPortrait)) {
+  await sharp(primaryPortrait)
+    .rotate()
+    .resize({ width: 1200, withoutEnlargement: true })
+    .webp({ quality: 85 })
+    .toFile(resolve(dir, 'harsh-sinha-thegeekharsh.webp'))
+  console.log('optimised harsh-sinha-thegeekharsh.webp')
+}

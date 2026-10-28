@@ -246,7 +246,7 @@ export const posts: Post[] = []
 /**
  * Entity facts used for structured data. Every value restates something shown on the page.
  * TODO (add when real): Person image URL once /images/harsh-portrait.jpg exists, Google Scholar /
- * ORCID / GitHub profile URLs in `sameAs`, Geek Hoppers social profiles, the chapter DOI.
+ * ORCID profile URLs in `sameAs`, Geek Hoppers social profiles, the chapter DOI.
  */
 export const entity = {
   /** ISO date the page content was last reviewed (drives dateModified). Keep in sync with now.lastUpdated. */
