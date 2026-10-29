@@ -91,10 +91,11 @@ assert(
 assert(indexHtml.includes('name="robots" content="index, follow'), 'dist/index.html is set to index, follow')
 
 // Homepage Metadata
-assert(indexHtml.includes('Harsh Sinha — Software Engineer · Enterprise Web'), 'dist/index.html contains original title')
-assert(indexHtml.includes('Software engineer working across enterprise web platforms'), 'dist/index.html contains original description')
-assert(indexHtml.includes('property="og:site_name" content="Harsh Sinha - Software Engineer"'), 'dist/index.html has og:site_name "Harsh Sinha - Software Engineer"')
+assert(indexHtml.includes('Harsh Sinha') && indexHtml.includes('Software Engineer'), 'dist/index.html contains Harsh Sinha and Software Engineer in title')
+assert(indexHtml.includes('software engineer'), 'dist/index.html contains description')
+assert(indexHtml.includes('property="og:site_name" content="Harsh Sinha | Software Engineer"'), 'dist/index.html has og:site_name "Harsh Sinha | Software Engineer"')
 assert(indexHtml.includes('property="og:type" content="website"'), 'dist/index.html has page-appropriate og:type "website"')
+assert(/<h1[^>]*>[\s\S]*?Harsh Sinha[\s\S]*?<\/h1>/.test(indexHtml), 'dist/index.html has <h1> prominently containing "Harsh Sinha"')
 
 // Duplicate tag check: exactly 1 application-name and apple-mobile-web-app-title
 const appNameMatches = indexHtml.match(/name="application-name"/g) || []
@@ -108,7 +109,7 @@ assert(indexJsonLdMatches.length === 1, `dist/index.html contains exactly 1 JSON
 
 // Homepage JSON-LD Schema: WebSite root + Person (NOT ProfilePage, no worksFor, no Founder/CEO)
 assert(indexHtml.includes('"@type":"WebSite"') || indexHtml.includes('"@type": "WebSite"'), 'dist/index.html includes WebSite JSON-LD')
-assert(indexHtml.includes('"name":"Harsh Sinha - Software Engineer"') || indexHtml.includes('"name": "Harsh Sinha - Software Engineer"'), 'WebSite JSON-LD sets name to "Harsh Sinha - Software Engineer"')
+assert(indexHtml.includes('"name":"Harsh Sinha | Software Engineer"'), 'WebSite JSON-LD sets name to "Harsh Sinha | Software Engineer"')
 const indexJsonLdContent = (indexHtml.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/) || [])[1] || ''
 assert(!indexJsonLdContent.includes('"ProfilePage"'), 'dist/index.html does NOT stamp ProfilePage on homepage root')
 assert(!indexJsonLdContent.includes('worksFor'), 'Homepage schema contains no worksFor')

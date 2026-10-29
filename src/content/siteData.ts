@@ -111,11 +111,11 @@ export interface PublicationData {
 
 export const SITE_METADATA = {
   name: 'Harsh Sinha',
-  brandName: 'Harsh Sinha - Software Engineer',
-  siteName: 'Harsh Sinha - Software Engineer',
-  title: 'Harsh Sinha — Software Engineer · Enterprise Web & Applied AI',
+  brandName: 'Harsh Sinha | Software Engineer',
+  siteName: 'Harsh Sinha | Software Engineer',
+  title: 'Harsh Sinha | Software Engineer · Enterprise Web & Applied AI',
   description:
-    'Software engineer working across enterprise web platforms (AEM 6.5, Edge Delivery Services), full-stack systems, and applied AI research.',
+    'Harsh Sinha is a software engineer specializing in enterprise web platforms (AEM 6.5, Edge Delivery Services), full-stack architecture, and applied AI research.',
   url: 'https://www.thegeekharsh.in',
   email: 'hello@thegeekharsh.in',
   mediaEmail: 'media@thegeekharsh.in',

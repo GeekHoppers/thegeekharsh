@@ -10,19 +10,36 @@ export const personEntity = {
   '@type': 'Person',
   '@id': PERSON_ID,
   name: 'Harsh Sinha',
-  alternateName: 'thegeekharsh',
+  alternateName: ['thegeekharsh', 'Harsh Sinha Software Engineer'],
   jobTitle: 'Software Engineer',
+  description:
+    'Software engineer working across enterprise web platforms (AEM 6.5, Edge Delivery Services), full-stack architecture, and applied AI research.',
   image: PORTRAIT_URL,
   url: `${SITE_URL}/`,
   sameAs: [LINKEDIN_URL, INSTAGRAM_URL],
+  knowsAbout: [
+    'Adobe Experience Manager (AEM)',
+    'AEM Edge Delivery Services',
+    'Full-Stack Development',
+    'Computer Vision',
+    'Software Engineering',
+    'TypeScript',
+    'Python',
+    'Java',
+  ],
 }
 
 export const websiteEntity = {
   '@type': 'WebSite',
   '@id': `${SITE_URL}/#website`,
   url: `${SITE_URL}/`,
-  name: 'Harsh Sinha - Software Engineer',
-  alternateName: ['Harsh Sinha', 'thegeekharsh', 'thegeekharsh.in'],
+  name: 'Harsh Sinha | Software Engineer',
+  alternateName: [
+    'Harsh Sinha - Software Engineer',
+    'Harsh Sinha',
+    'thegeekharsh',
+    'thegeekharsh.in',
+  ],
   publisher: { '@id': PERSON_ID },
 }
 
