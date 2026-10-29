@@ -23,12 +23,15 @@ export function HomePage() {
                 <div className="inline-flex items-center gap-space-xs px-2.5 py-1 rounded-full bg-secondary-container/70 text-on-secondary-fixed-variant">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                   <span className="font-meta-tag text-meta-tag tracking-widest uppercase">
-                    SOFTWARE ENGINEER · WEB PLATFORMS · APPLIED AI
+                    HARSH SINHA · SOFTWARE ENGINEER
                   </span>
                 </div>
 
                 <h1 className="font-display-hero text-headline-lg lg:text-display-hero text-on-surface tracking-tight font-semibold max-w-2xl">
-                  I build thoughtful digital experiences and the systems behind them.
+                  Harsh Sinha
+                  <span className="block text-primary font-serif italic text-headline-md lg:text-headline-lg mt-1 font-normal">
+                    Building thoughtful digital experiences &amp; systems.
+                  </span>
                 </h1>
 
                 <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">

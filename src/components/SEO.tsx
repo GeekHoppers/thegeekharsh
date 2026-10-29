@@ -89,7 +89,7 @@ export function SEO({
         {/* OpenGraph */}
         <meta property="og:type" content={ogType} />
         <meta property="og:locale" content="en_IN" />
-        <meta property="og:site_name" content="Harsh Sinha - Software Engineer" />
+        <meta property="og:site_name" content="Harsh Sinha | Software Engineer" />
         <meta property="og:title" content={fullTitle} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:url" content={canonicalUrl} />
